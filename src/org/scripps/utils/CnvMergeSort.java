@@ -265,6 +265,9 @@ public class CnvMergeSort extends JFrame implements Runnable
 				"Sorted File " + CnvReadFile.fileName + " by column: "
 						+ selection);
 		CnvShowTable.tableStatus = 23;
+		System.out.println("Before CnvShowTable.onlyPage: " + CnvShowTable.onlyPage );
+		CnvShowTable.onlyPage = 0;
+		System.out.println("After CnvShowTable.onlyPage: " + CnvShowTable.onlyPage );
 		frame.dispose();
 
 	}
@@ -284,6 +287,9 @@ public class CnvMergeSort extends JFrame implements Runnable
 		} else
 		{
 			leng = 1000;
+			CnvShowTable.onlyPage = 4;
+			System.out.println("Sort next: " + CnvShowTable.onlyPage);
+
 		}
 
 		SortedData = new Object[leng][CnvShowTable.columns.length];
@@ -312,7 +318,7 @@ public class CnvMergeSort extends JFrame implements Runnable
 	}
 
 	// Previous page
-	public static void PreviousPage()
+	public static void previousPage()
 	{
 		int leng;
 		int siz = arrayOfLines.size();
@@ -349,7 +355,7 @@ public class CnvMergeSort extends JFrame implements Runnable
 				"Sorted File " + CnvReadFile.fileName + " by column: "
 						+ selection);
 		CnvShowTable.tableStatus = 23;
-
+		CnvShowTable.onlyPage = 4;
 	}
 
 	public static void insertArray(double[][] data)
@@ -479,6 +485,7 @@ public class CnvMergeSort extends JFrame implements Runnable
 		{
 			perc2 = 0;
 			inputData(arrayOfLines, dataLines, selection);
+			System.out.println("After calling CnvShowTable.onlyPage: " + CnvShowTable.onlyPage );
 		} finally
 		{
 			Thread.currentThread().setName(orgName);

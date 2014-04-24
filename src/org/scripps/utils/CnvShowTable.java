@@ -236,27 +236,27 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 		{
 
 			String lines = af.get(j).fileRow;
-			String[] r2 = lines.split("\t");
-			int size1 = r2.length;
+			String[] lineAsArray = lines.split("\t");
+			int lengthOfLine = lineAsArray.length;
 
 			// Make sure this file has as many columns as the header
-			if (columns.length >= size1)
+			if (columns.length >= lengthOfLine)
 			{
-				for (int c = 0; c < size1; c++)
+				for (int c = 0; c < lengthOfLine; c++)
 				{
-					dataFilter[j][c] = r2[c];
+					dataFilter[j][c] = lineAsArray[c];
 				}
 				// if there is no comment fill that cell with null
-				if (columns.length > size1)
+				if (columns.length > lengthOfLine)
 				{
-					dataFilter[j][size1] = "";
+					dataFilter[j][lengthOfLine] = "";
 
 				}
 			} else
 			{
 				System.out
 						.println("This looks like a corupted file! Lenght of this line is: "
-								+ size1
+								+ lengthOfLine
 								+ " but we should have only "
 								+ columns.length + " columns.");
 				System.out.println(lines);
@@ -392,6 +392,7 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 		 * page count removed for now
 		 */
 		// get the current array size
+		
 		int ij = CnvShowTable.arrayOfArrays.size();
 		if (ij > 0)
 		{
@@ -399,8 +400,8 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 			tempArray = CnvShowTable.arrayOfArrays
 					.get(CnvFilterFunctions.currentArray);
 			int arrayLenght = tempArray.size();
-			int finalPage;
 			int pag = (int) arrayLenght / 1000;
+			int finalPage;
 			if (pag < 1)
 			{
 				pag = 1;
@@ -460,11 +461,15 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 		});
 
 		JButton firstPage = new JButton("|<<");
+		JButton prevPage = new JButton("<");
+
 
 		// if this is the main array, no actions aloud
 		if (CnvFilterFunctions.currentArray == 0)
 		{
 			firstPage.setEnabled(false);
+			prevPage.setEnabled(false);
+			
 		} else
 		{
 			firstPage.addActionListener(new java.awt.event.ActionListener()
@@ -479,30 +484,36 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 
 			});
 		}
-		JButton prevPage = new JButton("<");
-
+		
+	
 		// if this is the main array, no actions alowed
 		if (CnvFilterFunctions.currentArray == 0)
 		{
 			prevPage.setEnabled(false);
-		} else
+		} 
+		else
 		{
-			prevPage.addActionListener(new java.awt.event.ActionListener()
-			{
-				@Override
-				public void actionPerformed(java.awt.event.ActionEvent evt)
+			//if (pag == 1)
+				//prevPage.setEnabled(false);
+			//else
+			//{
+				prevPage.addActionListener(new java.awt.event.ActionListener()
 				{
+					@Override
+					public void actionPerformed(java.awt.event.ActionEvent evt)
+					{
 
-					UndoDataActionPerformed(evt);
+						UndoDataActionPerformed(evt);
 
-				}
+					}
 
-			});
+				});
+			//}
 		}
 
 		JButton nextPage = new JButton(">");
 
-		// if this is the last filtered array, no actions alowed
+		// if this is the last filtered array, no actions allowed
 		if (CnvFilterFunctions.currentArray == CnvShowTable.arrayOfArrays
 				.size() - 1)
 		{
@@ -611,29 +622,41 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 
 		if (onlyPage == 0)
 		{
-			Next = new JButton("Next Page");
-			Previous = new JButton("Previous Page");
-
+			Next = new JButton("Next Page");    
+			Previous = new JButton("First Page!");
+			Previous.setEnabled(false);
+			onlyPage = 4;
+ 
 		} else if (onlyPage == 1)
 		{
 			Next = new JButton("Single Page!");
 			Previous = new JButton("              ");
 			Next.setEnabled(false);
 			Previous.setEnabled(false);
-
+		
 		} else if (onlyPage == 2)
 		{
 			Next = new JButton("Last Page!");
 			Previous = new JButton("Previous Page");
 			Next.setEnabled(false);
-			onlyPage = 0;
+			Previous.setEnabled(true); //added by Neha
+			onlyPage = 4;
 
 		} else if (onlyPage == 3)
 		{
 			Next = new JButton("Next Page");
 			Previous = new JButton("First Page!");
 			Previous.setEnabled(false);
-			onlyPage = 0;
+			onlyPage = 4;
+		} 
+		
+		else if(onlyPage == 4)
+		{
+			Next = new JButton("Next Page");
+			Previous = new JButton("Previous Page");
+			Next.setEnabled(true);
+			Previous.setEnabled(true);
+					
 		}
 
 		Next.addActionListener(new java.awt.event.ActionListener()
@@ -729,7 +752,7 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 		// if tableStatus == 23 this is the sorted table
 		if (tableStatus == 23)
 		{
-			CnvMergeSort.PreviousPage();
+			CnvMergeSort.previousPage();
 		}
 		// if this is the main array after the entire array was loaded
 		else if (tableStatus == 17 || tableStatus == -1)
@@ -1787,7 +1810,7 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 		} else
 		{
 			end = FilteredArray.size();
-			onlyPage = 1;
+			onlyPage = 1; //one page only
 		}
 
 		for (int i = 0; i < end; i++)
@@ -2484,11 +2507,11 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 						// heapSortAlgorithm rf = new
 						// heapSortAlgorithm(TempArrayOne, TempArrayOne.size(),
 						// sortSelection);
-						CnvMergeSort rf = new CnvMergeSort(TempArrayOne,
-								TempArrayOne.size(), sortSelection);
+						CnvMergeSort sortData = new CnvMergeSort(TempArrayOne, TempArrayOne.size(), sortSelection);
 						threadExecutor = Executors.newFixedThreadPool(1);
 						threadStat = true;
-						threadExecutor.execute(rf);
+						threadExecutor.execute(sortData);
+						CnvShowTable.onlyPage = 3;
 						threadExecutor.shutdown();
 						demo1.frame.dispose();
 						// }
@@ -2511,12 +2534,13 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 							// heapSortAlgorithm rf2 = new
 							// heapSortAlgorithm(TempArrayOne,
 							// TempArrayOne.size(), sortSelection);
-							CnvMergeSort rf2 = new CnvMergeSort(TempArrayOne,
+							CnvMergeSort sortData2 = new CnvMergeSort(TempArrayOne,
 									TempArrayOne.size(), sortSelection);
 							// threadStat = false;
 							// sortStat=1;
 							threadExecutor = Executors.newFixedThreadPool(1);
-							threadExecutor.execute(rf2);
+							threadExecutor.execute(sortData2);
+							CnvShowTable.onlyPage = 3;
 							threadExecutor.shutdown();
 							frame.dispose();
 						}

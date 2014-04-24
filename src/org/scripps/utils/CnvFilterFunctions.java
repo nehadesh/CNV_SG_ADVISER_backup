@@ -131,6 +131,8 @@ public class CnvFilterFunctions implements Runnable
 		if (counterCod > 1000)
 		{
 			end = 1000;
+			CnvShowTable.onlyPage = 0; //added now by Neha
+			
 		} else
 		{
 			end = CnvShowTable.FilteredArray.size();
@@ -403,6 +405,7 @@ public class CnvFilterFunctions implements Runnable
 		if (counter > 1000)
 		{
 			end = 1000;
+			CnvShowTable.onlyPage = 0; //added now by Neha
 		} else
 		{
 			end = CnvShowTable.FilteredArray.size();
@@ -494,6 +497,7 @@ public class CnvFilterFunctions implements Runnable
 		if (counter > 1000)
 		{
 			end = 1000;
+			CnvShowTable.onlyPage = 0; //added now by Neha
 		} else
 		{
 			end = CnvShowTable.FilteredArray.size();
@@ -575,6 +579,7 @@ public class CnvFilterFunctions implements Runnable
 		if (counterClinnical > 1000)
 		{
 			end = 1000;
+			CnvShowTable.onlyPage = 0; //added now by Neha
 		}
 		// if we have less then 1000 lines print all the lens, set the page as
 		// the only page
@@ -670,6 +675,7 @@ public class CnvFilterFunctions implements Runnable
 		if (counterResearch > 1000)
 		{
 			end = 1000;
+			CnvShowTable.onlyPage = 0; //added now by Neha
 		}
 		// if we have less then 1000 lines print all the lens, set the page as
 		// the only page
@@ -801,6 +807,7 @@ public class CnvFilterFunctions implements Runnable
 		if (counterResearch > 1000)
 		{
 			end = 1000;
+			CnvShowTable.onlyPage = 0; //added now by Neha
 		}
 		// if we have less then 1000 lines print all the lens, set the page as
 		// the only page
@@ -888,6 +895,7 @@ public class CnvFilterFunctions implements Runnable
 		if (counterPharm > 1000)
 		{
 			end = 1000;
+			CnvShowTable.onlyPage = 0; //added now by Neha
 		}
 		// if we have less then 1000 lines print all the lens, set the page as
 		// the only page
@@ -1238,7 +1246,7 @@ public class CnvFilterFunctions implements Runnable
 		// dispose the progresses bar
 		frame.dispose();
 		CnvShowTable.frame.dispose();
-		filterName.add("Advanced filter OR logical operator");
+		filterName.add(" OR logical operator");
 		// change the count of current array
 		currentArray = currentArray + 1;
 		// Insert newly filtered array
@@ -1397,7 +1405,10 @@ public class CnvFilterFunctions implements Runnable
 		if (counter > 1000)
 		{
 			end = 1000;
+			//CnvShowTable.onlyPage = 0;
+			//System.out.println("Simple filter0000000000"); //JUST ADDED
 		}
+		
 		// if we have less then 1000 lines print all the lens, set the page as
 		// the only page
 		else
@@ -1497,6 +1508,7 @@ public class CnvFilterFunctions implements Runnable
 		if (counter > 1000)
 		{
 			end = 1000;
+			CnvShowTable.onlyPage = 0; //added by Neha to fix SIMPLE FILTER PROBLEM
 		}
 		// if we have less then 1000 lines print all the lens, set the page as
 		// the only page
@@ -1620,6 +1632,7 @@ public class CnvFilterFunctions implements Runnable
 		if (counter > 1000)
 		{
 			end = 1000;
+			//CnvShowTable.onlyPage = 0;	
 		}
 		// if we have less then 1000 lines print all the lens, set the page as
 		// the only page
@@ -1748,6 +1761,8 @@ public class CnvFilterFunctions implements Runnable
 		if (counter > 1000)
 		{
 			end = 1000;
+			//CnvShowTable.onlyPage = 0;
+			//System.out.println("Simple filterswe0000000000"); //JUST ADDED
 		}
 		// if we have less then 1000 lines print all the lens, set the page as
 		// the only page
