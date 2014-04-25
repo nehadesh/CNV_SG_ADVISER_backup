@@ -478,6 +478,7 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 				public void actionPerformed(java.awt.event.ActionEvent evt)
 				{
 
+					CnvShowTable.onlyPage = 0; //Neha: added to fix PrevPage problem with undo
 					UndoActionPerformed(evt);
 
 				}
@@ -503,6 +504,7 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 					public void actionPerformed(java.awt.event.ActionEvent evt)
 					{
 
+						CnvShowTable.onlyPage = 0; //Neha: added to fix PrevPage problem with undo
 						UndoDataActionPerformed(evt);
 
 					}
@@ -526,6 +528,7 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 				public void actionPerformed(java.awt.event.ActionEvent evt)
 				{
 
+					CnvShowTable.onlyPage = 0; //Neha: added to fix PrevPage problem with NextFilterActionPerformed
 					NextFilterActionPerformed(evt);
 
 				}
@@ -550,6 +553,7 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 				public void actionPerformed(java.awt.event.ActionEvent evt)
 				{
 
+					CnvShowTable.onlyPage = 0; //Neha: added to fix PrevPage problem with lastFilterActionPerformed
 					LastFilterActionPerformed(evt);
 
 				}
@@ -1184,19 +1188,11 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 		JMenuItem cancerGenes = new JMenuItem("Cancer Genes");
 		JMenuItem pharmacogenetic = new JMenuItem("Pharmacogenetic");
 		JMenuItem truncatedVariants = new JMenuItem("Truncating Variants");
-		JMenuItem nondbSNP = new JMenuItem("Novel Variants"); // Should I
-																// delete?
-		JMenuItem nondbSNPFreq = new JMenuItem(
-				"Non dbSNP Coding & Splice Variants with Frequency"); // Should
-																		// I
-																		// delete?
 		JMenuItem chromPos = new JMenuItem("Chromosome Position");
 		JMenuItem validValueFilter = new JMenuItem("Existing Valid Values");
 		JMenuItem previousFilter = new JMenuItem("Previous step");
 		JMenuItem stats = new JMenuItem("Statistics");
 		JMenuItem helpMe = new JMenuItem("Help");
-		JMenuItem idiomFilter = new JMenuItem("IDIOM filter"); // Should I
-																// delete?
 		JMenuItem geneList = new JMenuItem("Gene list filter"); // Should I
 																// delete?
 
@@ -1219,14 +1215,9 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 		pharmacogenetic.setToolTipText("All variants curated by PharmGKB.");
 		truncatedVariants
 				.setToolTipText("All Frameshift and Nonsense variants.");
-		nondbSNP.setToolTipText("Potential novel variants – i.e. variants not catalogued in dbSNP.");
-		nondbSNPFreq
-				.setToolTipText("Non dbSNP Coding & Splice Variants with Frequency.");
 		chromPos.setToolTipText("All variants within a user defined region.");
 		validValueFilter
 				.setToolTipText("All variants that have valid values in a specific column except '-' and 'N/A'");
-		idiomFilter
-				.setToolTipText("All De-novo variants; Homozygous in child only and Compound Heterozygous variants.");
 		geneList.setToolTipText("Filters the variants present in a provided list of genes.");
 
 		filters.add(codingVar);
@@ -1237,11 +1228,8 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 		filters.add(cancerGenes);
 		filters.add(pharmacogenetic);
 		filters.add(truncatedVariants);
-		filters.add(nondbSNP);
-		// filters.add(nondbSNPFreq);
 		filters.add(chromPos);
 		filters.add(validValueFilter);
-		filters.add(idiomFilter);
 		filters.add(geneList);
 		// filters.add(advanceFilter);
 		statistics.add(stats);
@@ -1567,30 +1555,6 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 			}
 		});
 
-		nondbSNP.addActionListener(new java.awt.event.ActionListener()
-		{
-			@Override
-			public void actionPerformed(java.awt.event.ActionEvent evt)
-			{
-				tableStatus = 11;
-				InitGlobalVar();
-				// if sort thread exists, kill it!
-				if (threadStat == false)
-				{
-					NondbSNPActionPerformed(evt);
-				} else
-				{
-					threadExecutor.shutdownNow();
-					// heapSortAlgorithm.frame.dispose();
-					// heapSortAlgorithm.ArrayforSort = null;
-					CnvMergeSort.frame.dispose();
-					CnvMergeSort.ArrayforSort = null;
-					NondbSNPActionPerformed(evt);
-				}
-
-			}
-		});
-
 		codingVarFreq.addActionListener(new java.awt.event.ActionListener()
 		{
 			@Override
@@ -1598,32 +1562,6 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 			{
 				InitGlobalVar();
 				tableStatus = 12;
-				frequencySelection = -1.0;
-				frequencySelection2 = -1.0;
-				frequencySelection3 = -1.0;
-				// if sort thread exists, kill it!
-				if (threadStat == false)
-				{
-					CodingVarFreqActionPerformed(evt);
-				} else
-				{
-					threadExecutor.shutdownNow();
-					// heapSortAlgorithm.frame.dispose();
-					// heapSortAlgorithm.ArrayforSort = null;
-					CnvMergeSort.frame.dispose();
-					CnvMergeSort.ArrayforSort = null;
-					CodingVarFreqActionPerformed(evt);
-				}
-			}
-		});
-
-		nondbSNPFreq.addActionListener(new java.awt.event.ActionListener()
-		{
-			@Override
-			public void actionPerformed(java.awt.event.ActionEvent evt)
-			{
-				tableStatus = 13;
-				InitGlobalVar();
 				frequencySelection = -1.0;
 				frequencySelection2 = -1.0;
 				frequencySelection3 = -1.0;
@@ -1667,31 +1605,7 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 			}
 		});
 
-		idiomFilter.addActionListener(new java.awt.event.ActionListener()
-		{
-			@Override
-			public void actionPerformed(java.awt.event.ActionEvent evt)
-			{
-				tableStatus = 21;
-				InitGlobalVar();
-				// if sort thread exists, kill it!
-				if (threadStat == false)
-				{
-					IDIOM(evt);
-				} else
-				{
-					threadExecutor.shutdownNow();
-					// heapSortAlgorithm.frame.dispose();
-					// heapSortAlgorithm.ArrayforSort = null;
-					CnvMergeSort.frame.dispose();
-					CnvMergeSort.ArrayforSort = null;
-					IDIOM(evt);
-				}
-
-			}
-		});
-
-		validValueFilter.addActionListener(new java.awt.event.ActionListener()
+				validValueFilter.addActionListener(new java.awt.event.ActionListener()
 		{
 			@Override
 			public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -2052,14 +1966,6 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 		threadExecutor.shutdown();
 	}
 
-	public static void NondbSNPActionPerformed(java.awt.event.ActionEvent evt)
-	{
-		CnvFilterFunctions rf2 = new CnvFilterFunctions("NondbSNP");
-		threadExecutor = Executors.newFixedThreadPool(1);
-		threadExecutor.execute(rf2);
-		threadExecutor.shutdown();
-	}
-
 	public static void SaveActionPerformed(ActionEvent evt) throws IOException
 	{
 
@@ -2161,14 +2067,6 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 		CnvChromPosFilter fr = new CnvChromPosFilter();
 		String[] a = { "", "" };
 		fr.main(a);
-	}
-
-	public static void IDIOM(java.awt.event.ActionEvent evt)
-	{
-		CnvIDIOMmultipleChildren fr = new CnvIDIOMmultipleChildren();
-		String[] a = { "", "" };
-		fr.main(a);
-
 	}
 
 	public static void gList(java.awt.event.ActionEvent evt)
