@@ -1697,6 +1697,7 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 			public void actionPerformed(java.awt.event.ActionEvent evt)
 			{
 				tableStatus = 18;
+				CnvShowTable.onlyPage = 0; //Neha: to fix Existing Valid value - previous page problem
 				InitGlobalVar();
 				// if sort thread exists, kill it!
 				if (threadStat == false)
@@ -2177,7 +2178,7 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 		threadExecutor = Executors.newFixedThreadPool(1);
 		threadExecutor.execute(rf2);
 		threadExecutor.shutdown();
-
+		
 	}
 
 	public static void ValidValFilter(java.awt.event.ActionEvent evt)
@@ -2247,7 +2248,7 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 		text3 = null;
 		FilteredArray = new ArrayList<CnvReader>();
 		tableStatus = 14;
-		CnvShowTable.onlyPage = 0; // ADDED by Neha to fix Advanced Filter
+		CnvShowTable.onlyPage = 0; // Neha: fixed PrevPage problem with Advanced Filter
 		//System.out.println("ADVANCEDfilter");
 
 		final CnvViewerInterface demo2 = new CnvViewerInterface();

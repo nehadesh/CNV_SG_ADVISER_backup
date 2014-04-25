@@ -53,6 +53,7 @@ public class CnvFilterFunctions implements Runnable
 
 	public CnvFilterFunctions(String s)
 	{
+		//System.out.println("Inside Filter Function Constructor @@@@@@@");
 		frame = new JFrame("File filtering");
 		content = frame.getContentPane();
 		progressBar = new JProgressBar();
@@ -2688,7 +2689,10 @@ public class CnvFilterFunctions implements Runnable
 
 		fileChooser = new JFileChooser();
 		int returnVal = fileChooser.showSaveDialog(CnvFilterFunctions.frame);
-		if (returnVal == JFileChooser.APPROVE_OPTION)
+		if (returnVal == JFileChooser.CANCEL_OPTION)
+			return;
+			
+		else if (returnVal == JFileChooser.APPROVE_OPTION)
 		{
 			File file = fileChooser.getSelectedFile();
 			String fName = file.getName();
@@ -2779,6 +2783,7 @@ public class CnvFilterFunctions implements Runnable
 		if (found_counter > 1000)
 		{
 			end = 1000;
+			CnvShowTable.onlyPage=0; //Neha: to fix Gene List filter prev page
 		} else
 		{
 			end = CnvShowTable.FilteredArray.size();
