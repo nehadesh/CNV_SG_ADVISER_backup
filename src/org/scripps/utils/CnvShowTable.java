@@ -535,11 +535,13 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 
 		JButton lastPage = new JButton(">>|");
 
-		// if this is the last filtered array, no actions alowed
+		// if this is the last filtered array, no actions allowed
+		
 		if (CnvFilterFunctions.currentArray == CnvShowTable.arrayOfArrays
 				.size() - 1)
 		{
 			lastPage.setEnabled(false);
+			
 		} else
 		{
 			lastPage.addActionListener(new java.awt.event.ActionListener()
@@ -575,7 +577,7 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 				{
 					tableStatus = 15;
 					InitGlobalVar();
-					// kill the sort thread if it's hapening
+					// kill the sort thread if it's happening
 					if (threadStat == false)
 					{
 						FilteredArray = new ArrayList<CnvReader>();
@@ -2245,6 +2247,8 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 		text3 = null;
 		FilteredArray = new ArrayList<CnvReader>();
 		tableStatus = 14;
+		CnvShowTable.onlyPage = 0; // ADDED by Neha to fix Advanced Filter
+		//System.out.println("ADVANCEDfilter");
 
 		final CnvViewerInterface demo2 = new CnvViewerInterface();
 		demo2.frame.setContentPane(demo2.createContentPane());

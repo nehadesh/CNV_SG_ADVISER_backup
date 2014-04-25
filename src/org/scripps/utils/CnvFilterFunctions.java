@@ -1633,6 +1633,7 @@ public class CnvFilterFunctions implements Runnable
 		{
 			end = 1000;
 			//CnvShowTable.onlyPage = 0;	
+			
 		}
 		// if we have less then 1000 lines print all the lens, set the page as
 		// the only page
@@ -1762,7 +1763,7 @@ public class CnvFilterFunctions implements Runnable
 		{
 			end = 1000;
 			//CnvShowTable.onlyPage = 0;
-			//System.out.println("Simple filterswe0000000000"); //JUST ADDED
+		
 		}
 		// if we have less then 1000 lines print all the lens, set the page as
 		// the only page
