@@ -1914,8 +1914,7 @@ public class CnvFilterFunctions implements Runnable
 		/*
 		 * variables needed to build that darn table; get rid of some of them
 		 */
-		String newHead = "Imported Genotypes" + "\t" + "Data Counter" + "\t"
-				+ CnvViewerInterface.tempHeadForPrefilter + "\t" + "Comments";
+		String newHead = "Data Counter" + "\t" + CnvViewerInterface.tempHeadForPrefilter + "\t" + "Comments"; //DELETED: "Imported Genotypes" + "\t" + 
 		CnvShowTable.columnNames = newHead.split("\t");
 		CnvShowTable.columns = newHead.split("\t");
 

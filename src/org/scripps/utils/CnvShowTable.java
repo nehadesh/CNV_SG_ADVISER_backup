@@ -1158,7 +1158,6 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 		JMenuItem exit = new JMenuItem("Exit Application");
 		// JMenuItem exitFile = new JMenuItem("Close File");
 		// JMenuItem openNew = new JMenuItem("Upload new file");
-		JMenuItem openVCF = new JMenuItem("Load & compare VCF file");
 		JMenuItem openCG = new JMenuItem(
 				"Load & compare Complete Genomics file");
 		JMenuItem sort = new JMenuItem("Sort");
@@ -1241,7 +1240,6 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 		file.add(exit);
 		// file.add(exitFile);
 		// file.add(openNew);
-		file.add(openVCF);
 		file.add(openCG);
 		data.add(sort);
 		help.add(helpMe);

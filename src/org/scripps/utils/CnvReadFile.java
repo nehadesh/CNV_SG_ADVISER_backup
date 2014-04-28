@@ -68,7 +68,6 @@ public class CnvReadFile extends JFrame implements Runnable
 		try
 		{
 			int datacount = 0;
-
 			CnvViewerInterface newfile = new CnvViewerInterface();
 			fileName = file.getName();
 			BufferedReader bReader;
@@ -149,14 +148,15 @@ public class CnvReadFile extends JFrame implements Runnable
 						datacount++;
 						String nt;
 						// adding an index plus first element needs to be an
-						// empty space for future adition of imported genotypes
+						// empty space for future addition of imported genotypes
 						// Index is needed in the table view so i will know
 						// which
-						// line to edit in the dataset
-						nt = "N/A" + "\t" + datacount + "\t" + line;
+						// line to edit in the data set
+						nt = datacount + "\t" + line; //DELETED: "N/A" + "\t" + 
 
 						CnvReader ob1 = new CnvReader(nt);
 						arrayOfLines.add(ob1);
+
 
 						if (datacount % 100000 == 0)
 						{

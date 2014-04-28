@@ -161,6 +161,7 @@ public class CnvViewerInterface extends javax.swing.JFrame
 				for (int i = 0; i < 1; i++)
 				{
 					line = bReader.readLine();
+					//System.out.println(line); //MAJOR CHANGE
 					String l = "";
 					/*
 					 * Check to see if this is a SG-ADviser line:
@@ -192,8 +193,8 @@ public class CnvViewerInterface extends javax.swing.JFrame
 							}
 						} else
 						{
-							l = "Imported_Genotypes" + "\t" + "Index" + "\t"
-									+ line;
+							l =  "Index" + "\t" + line; //DELETED "Imported_Genotypes" + "\t" +
+									
 						}
 
 						viewFiftyLines.head = new CnvHeader(l);
@@ -257,7 +258,7 @@ public class CnvViewerInterface extends javax.swing.JFrame
 								} else
 								{
 									String nt;
-									nt = "N/A" + "\t" + in + "\t" + n;
+									nt = in + "\t" + n; //DELETED: "N/A" + "\t" + 
 									CnvReader ob1 = new CnvReader(nt);
 									viewFiftyLines.arrayOfLines.add(ob1);
 								}
@@ -323,7 +324,7 @@ public class CnvViewerInterface extends javax.swing.JFrame
 		for (int i = 0; i < 1; i++)
 		{
 			line = bReader.readLine();
-			String l = "Imported_Genotypes" + "\t" + "Index" + "\t" + line;
+			String l =  "Index" + "\t" + line; //DELETED: "Imported_Genotypes" + "\t" +
 			viewFiftyLines.head = new CnvHeader(l);
 
 		}
@@ -340,7 +341,7 @@ public class CnvViewerInterface extends javax.swing.JFrame
 			{
 
 				String nt;
-				nt = "N/A" + "\t" + in + "\t" + n;
+				nt = in + "\t" + n; //DELETED: "N/A" + "\t" + 
 				CnvReader ob1 = new CnvReader(nt);
 				viewFiftyLines.arrayOfLines.add(ob1);
 
