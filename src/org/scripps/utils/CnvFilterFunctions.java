@@ -222,6 +222,7 @@ public class CnvFilterFunctions implements Runnable
 				// System.out.println("dbSNP column number is: " + dbSNP);
 			}
 		}
+		
 
 		for (int i = 0; i < end; i++)
 		{
@@ -244,7 +245,7 @@ public class CnvFilterFunctions implements Runnable
 				String t = l[dbSNP];
 				if (!t.equals("-"))
 				{
-					continue;
+					continue;	
 				}
 			}
 
@@ -265,7 +266,6 @@ public class CnvFilterFunctions implements Runnable
 
 				} else
 				{
-
 					Double b = -1.0;
 					Double c = -1.0;
 					Double d = -1.0;
@@ -402,6 +402,7 @@ public class CnvFilterFunctions implements Runnable
 			}
 
 		}
+		
 
 		if (counter > 1000)
 		{
@@ -420,18 +421,14 @@ public class CnvFilterFunctions implements Runnable
 		frame.dispose();
 		CnvShowTable.frame.dispose();
 
-		if (CnvShowTable.tableStatus == 4)
-		{
-			filterName.add("Coding & Splice Var");
-		}
 		if (CnvShowTable.tableStatus == 12)
 		{
-			filterName.add("Coding and Splice Variants plus frequency");
+			filterName.add("Coding Variants plus frequency");
 		}
 		if (CnvShowTable.tableStatus == 13)
 		{
 			filterName
-					.add("Non dbSNP, Coding and Splice Variants with frequency");
+					.add("Non dbSNP, Coding Variants with frequency");
 		}
 		currentArray = currentArray + 1;
 		CnvShowTable.arrayOfArrays.add(CnvShowTable.FilteredArray);
@@ -1914,7 +1911,7 @@ public class CnvFilterFunctions implements Runnable
 		/*
 		 * variables needed to build that darn table; get rid of some of them
 		 */
-		String newHead = "Data Counter" + "\t" + CnvViewerInterface.tempHeadForPrefilter + "\t" + "Comments"; //DELETED: "Imported Genotypes" + "\t" + 
+		String newHead = "Data Counter" + "\t" + CnvViewerInterface.tempHeadForPrefilter + "\t" + "Comments"; 
 		CnvShowTable.columnNames = newHead.split("\t");
 		CnvShowTable.columns = newHead.split("\t");
 
@@ -1934,7 +1931,7 @@ public class CnvFilterFunctions implements Runnable
 		frame.dispose();
 		// Interface.frame.dispose();
 
-		filterName.add("Coding & Splice Variants");
+		
 		CnvShowTable.arrayOfArrays.add(CnvReadFile.arrayOfLines);
 		CnvShowTable.into2DArrayFilterData(TempArray, end);
 	}
@@ -2287,8 +2284,8 @@ public class CnvFilterFunctions implements Runnable
 		{
 			CodingVar();
 		}
-		if (CnvShowTable.tableStatus == 4 || CnvShowTable.tableStatus == 12
-				|| CnvShowTable.tableStatus == 13)
+		if (CnvShowTable.tableStatus == 12
+				|| CnvShowTable.tableStatus == 13) 
 		{
 			SpliceVar();
 		}

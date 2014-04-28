@@ -152,7 +152,7 @@ public class CnvReadFile extends JFrame implements Runnable
 						// Index is needed in the table view so i will know
 						// which
 						// line to edit in the data set
-						nt = datacount + "\t" + line; //DELETED: "N/A" + "\t" + 
+						nt = datacount + "\t" + line; 
 
 						CnvReader ob1 = new CnvReader(nt);
 						arrayOfLines.add(ob1);

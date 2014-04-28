@@ -63,6 +63,8 @@ import javax.swing.table.TableColumn;
 
 import org.scripps.cnvViewer.CnvViewerInterface;
 
+import ScrippsGenomeAdviserUI.MergeSort;
+
 /**
  * 
  * @author gerikson
@@ -392,7 +394,7 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 		 * page count removed for now
 		 */
 		// get the current array size
-		
+
 		int ij = CnvShowTable.arrayOfArrays.size();
 		if (ij > 0)
 		{
@@ -463,13 +465,12 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 		JButton firstPage = new JButton("|<<");
 		JButton prevPage = new JButton("<");
 
-
 		// if this is the main array, no actions aloud
 		if (CnvFilterFunctions.currentArray == 0)
 		{
 			firstPage.setEnabled(false);
 			prevPage.setEnabled(false);
-			
+
 		} else
 		{
 			firstPage.addActionListener(new java.awt.event.ActionListener()
@@ -478,39 +479,39 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 				public void actionPerformed(java.awt.event.ActionEvent evt)
 				{
 
-					CnvShowTable.onlyPage = 0; //Neha: added to fix PrevPage problem with undo
+					CnvShowTable.onlyPage = 0; // Neha: added to fix PrevPage
+												// problem with undo
 					UndoActionPerformed(evt);
 
 				}
 
 			});
 		}
-		
-	
+
 		// if this is the main array, no actions alowed
 		if (CnvFilterFunctions.currentArray == 0)
 		{
 			prevPage.setEnabled(false);
-		} 
-		else
+		} else
 		{
-			//if (pag == 1)
-				//prevPage.setEnabled(false);
-			//else
-			//{
-				prevPage.addActionListener(new java.awt.event.ActionListener()
+			// if (pag == 1)
+			// prevPage.setEnabled(false);
+			// else
+			// {
+			prevPage.addActionListener(new java.awt.event.ActionListener()
+			{
+				@Override
+				public void actionPerformed(java.awt.event.ActionEvent evt)
 				{
-					@Override
-					public void actionPerformed(java.awt.event.ActionEvent evt)
-					{
 
-						CnvShowTable.onlyPage = 0; //Neha: added to fix PrevPage problem with undo
-						UndoDataActionPerformed(evt);
+					CnvShowTable.onlyPage = 0; // Neha: added to fix PrevPage
+												// problem with undo
+					UndoDataActionPerformed(evt);
 
-					}
+				}
 
-				});
-			//}
+			});
+			// }
 		}
 
 		JButton nextPage = new JButton(">");
@@ -528,7 +529,9 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 				public void actionPerformed(java.awt.event.ActionEvent evt)
 				{
 
-					CnvShowTable.onlyPage = 0; //Neha: added to fix PrevPage problem with NextFilterActionPerformed
+					CnvShowTable.onlyPage = 0; // Neha: added to fix PrevPage
+												// problem with
+												// NextFilterActionPerformed
 					NextFilterActionPerformed(evt);
 
 				}
@@ -539,12 +542,12 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 		JButton lastPage = new JButton(">>|");
 
 		// if this is the last filtered array, no actions allowed
-		
+
 		if (CnvFilterFunctions.currentArray == CnvShowTable.arrayOfArrays
 				.size() - 1)
 		{
 			lastPage.setEnabled(false);
-			
+
 		} else
 		{
 			lastPage.addActionListener(new java.awt.event.ActionListener()
@@ -553,7 +556,9 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 				public void actionPerformed(java.awt.event.ActionEvent evt)
 				{
 
-					CnvShowTable.onlyPage = 0; //Neha: added to fix PrevPage problem with lastFilterActionPerformed
+					CnvShowTable.onlyPage = 0; // Neha: added to fix PrevPage
+												// problem with
+												// lastFilterActionPerformed
 					LastFilterActionPerformed(evt);
 
 				}
@@ -628,24 +633,24 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 
 		if (onlyPage == 0)
 		{
-			Next = new JButton("Next Page");    
+			Next = new JButton("Next Page");
 			Previous = new JButton("First Page!");
 			Previous.setEnabled(false);
 			onlyPage = 4;
- 
+
 		} else if (onlyPage == 1)
 		{
 			Next = new JButton("Single Page!");
 			Previous = new JButton("              ");
 			Next.setEnabled(false);
 			Previous.setEnabled(false);
-		
+
 		} else if (onlyPage == 2)
 		{
 			Next = new JButton("Last Page!");
 			Previous = new JButton("Previous Page");
 			Next.setEnabled(false);
-			Previous.setEnabled(true); //added by Neha
+			Previous.setEnabled(true); // added by Neha
 			onlyPage = 4;
 
 		} else if (onlyPage == 3)
@@ -654,15 +659,15 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 			Previous = new JButton("First Page!");
 			Previous.setEnabled(false);
 			onlyPage = 4;
-		} 
-		
-		else if(onlyPage == 4)
+		}
+
+		else if (onlyPage == 4)
 		{
 			Next = new JButton("Next Page");
 			Previous = new JButton("Previous Page");
 			Next.setEnabled(true);
 			Previous.setEnabled(true);
-					
+
 		}
 
 		Next.addActionListener(new java.awt.event.ActionListener()
@@ -1168,16 +1173,9 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 		JMenuItem undo = new JMenuItem("Original data");
 
 		// Custom Filters
-		JMenuItem codingVar = new JMenuItem("Coding Variants"); // ??? -
-																// extracts
-																// Frameshift +
-																// something
-																// else?
-		JMenuItem spliceVar = new JMenuItem("Coding & Splice Variants"); // Should
-																			// I
-																			// delete?
+		JMenuItem codingVar = new JMenuItem("Coding Variants"); 
 		JMenuItem codingVarFreq = new JMenuItem(
-				"Coding & Splice Variants with Frequency");
+				"Coding Variants with Frequency");
 		JMenuItem knownDisease = new JMenuItem("Known Disease");
 		JMenu predictedDisease = new JMenu(
 				"Known and Predicted Disease-Causing Variants");
@@ -1192,18 +1190,14 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 		JMenuItem previousFilter = new JMenuItem("Previous step");
 		JMenuItem stats = new JMenuItem("Statistics");
 		JMenuItem helpMe = new JMenuItem("Help");
-		JMenuItem geneList = new JMenuItem("Gene list filter"); // Should I
-																// delete?
-
+		JMenuItem geneList = new JMenuItem("Gene list filter"); 
 		predictedDisease.add(predClinical);
 		predictedDisease.add(predResearch);
 
 		codingVar
 				.setToolTipText("All variants impacting the protein coding sequence of a gene: i.e. all possible coding impacts except synonymous variants.");
-		spliceVar
-				.setToolTipText("Coding Variants plus variants annotated to damaged splice donor and acceptor sites.");
 		codingVarFreq
-				.setToolTipText("Coding and Splice Variants plus a user defined frequency threshold in as observed in the 1000 Genomes, 69 publically available Complete Genomics genomes and the Scripps Wellderly population.");
+				.setToolTipText("Coding Variants plus a user defined frequency threshold in as observed in the 1000 Genomes, 69 publically available Complete Genomics genomes and the Scripps Wellderly population.");
 		knownDisease.setToolTipText("'1' values of the ACMG-Score columns.");
 		predClinical
 				.setToolTipText("All entries in the column 'ACMG Score Clinical/Disease Entry/Explanation' receiving a modified ACMG categorization of 1, 2, or 2*. See http://genomics.scripps.edu/ADVISER/ACMG.jsp for ACMG scoring criteria.");
@@ -1220,7 +1214,6 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 		geneList.setToolTipText("Filters the variants present in a provided list of genes.");
 
 		filters.add(codingVar);
-		filters.add(spliceVar);
 		filters.add(codingVarFreq);
 		filters.add(knownDisease);
 		filters.add(predictedDisease);
@@ -1385,33 +1378,7 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 				}
 			}
 		});
-
-		spliceVar.addActionListener(new java.awt.event.ActionListener()
-		{
-			@Override
-			public void actionPerformed(java.awt.event.ActionEvent evt)
-			{
-				// for Next/previous pages need to know which filter happened
-				tableStatus = 4;
-				InitGlobalVar();
-				frequencySelection = -1.0;
-				frequencySelection2 = -1.0;
-				frequencySelection3 = -1.0;
-				// if sort thread exists, kill it!
-				if (threadStat == false)
-				{
-					SpliceVarActionPerformed(evt);
-				} else
-				{
-					threadExecutor.shutdownNow();
-					CnvMergeSort.frame.dispose();
-					SpliceVarActionPerformed(evt);
-
-				}
-
-			}
-		});
-
+		
 		knownDisease.addActionListener(new java.awt.event.ActionListener()
 		{
 			@Override
@@ -1603,13 +1570,14 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 			}
 		});
 
-				validValueFilter.addActionListener(new java.awt.event.ActionListener()
+		validValueFilter.addActionListener(new java.awt.event.ActionListener()
 		{
 			@Override
 			public void actionPerformed(java.awt.event.ActionEvent evt)
 			{
 				tableStatus = 18;
-				CnvShowTable.onlyPage = 0; //Neha: to fix Existing Valid value - previous page problem
+				CnvShowTable.onlyPage = 0; // Neha: to fix Existing Valid value
+											// - previous page problem
 				InitGlobalVar();
 				// if sort thread exists, kill it!
 				if (threadStat == false)
@@ -1725,7 +1693,7 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 		} else
 		{
 			end = FilteredArray.size();
-			onlyPage = 1; //one page only
+			onlyPage = 1; // one page only
 		}
 
 		for (int i = 0; i < end; i++)
@@ -1903,11 +1871,13 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 	public static void SpliceVarActionPerformed(java.awt.event.ActionEvent evt)
 	{
 		CnvFilterFunctions rf2 = new CnvFilterFunctions(
-				"Coding and Splice Variants");
+				"Coding Variants");
 		threadExecutor = Executors.newFixedThreadPool(1);
 		threadExecutor.execute(rf2);
 		threadExecutor.shutdown();
 	}
+	
+	
 
 	// Known disease causing variants "1"s only
 	public static void KnownDiseaseActionPerformed(
@@ -2074,7 +2044,7 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 		threadExecutor = Executors.newFixedThreadPool(1);
 		threadExecutor.execute(rf2);
 		threadExecutor.shutdown();
-		
+
 	}
 
 	public static void ValidValFilter(java.awt.event.ActionEvent evt)
@@ -2144,8 +2114,9 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 		text3 = null;
 		FilteredArray = new ArrayList<CnvReader>();
 		tableStatus = 14;
-		CnvShowTable.onlyPage = 0; // Neha: fixed PrevPage problem with Advanced Filter
-		//System.out.println("ADVANCEDfilter");
+		CnvShowTable.onlyPage = 0; // Neha: fixed PrevPage problem with Advanced
+									// Filter
+		// System.out.println("ADVANCEDfilter");
 
 		final CnvViewerInterface demo2 = new CnvViewerInterface();
 		demo2.frame.setContentPane(demo2.createContentPane());
@@ -2408,7 +2379,8 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 						// heapSortAlgorithm rf = new
 						// heapSortAlgorithm(TempArrayOne, TempArrayOne.size(),
 						// sortSelection);
-						CnvMergeSort sortData = new CnvMergeSort(TempArrayOne, TempArrayOne.size(), sortSelection);
+						CnvMergeSort sortData = new CnvMergeSort(TempArrayOne,
+								TempArrayOne.size(), sortSelection);
 						threadExecutor = Executors.newFixedThreadPool(1);
 						threadStat = true;
 						threadExecutor.execute(sortData);
@@ -2435,8 +2407,9 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 							// heapSortAlgorithm rf2 = new
 							// heapSortAlgorithm(TempArrayOne,
 							// TempArrayOne.size(), sortSelection);
-							CnvMergeSort sortData2 = new CnvMergeSort(TempArrayOne,
-									TempArrayOne.size(), sortSelection);
+							CnvMergeSort sortData2 = new CnvMergeSort(
+									TempArrayOne, TempArrayOne.size(),
+									sortSelection);
 							// threadStat = false;
 							// sortStat=1;
 							threadExecutor = Executors.newFixedThreadPool(1);

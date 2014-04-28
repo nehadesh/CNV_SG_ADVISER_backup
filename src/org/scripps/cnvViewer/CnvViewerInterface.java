@@ -193,7 +193,7 @@ public class CnvViewerInterface extends javax.swing.JFrame
 							}
 						} else
 						{
-							l =  "Index" + "\t" + line; //DELETED "Imported_Genotypes" + "\t" +
+							l =  "Index" + "\t" + line;
 									
 						}
 
@@ -258,7 +258,7 @@ public class CnvViewerInterface extends javax.swing.JFrame
 								} else
 								{
 									String nt;
-									nt = in + "\t" + n; //DELETED: "N/A" + "\t" + 
+									nt = in + "\t" + n;
 									CnvReader ob1 = new CnvReader(nt);
 									viewFiftyLines.arrayOfLines.add(ob1);
 								}
@@ -324,7 +324,7 @@ public class CnvViewerInterface extends javax.swing.JFrame
 		for (int i = 0; i < 1; i++)
 		{
 			line = bReader.readLine();
-			String l =  "Index" + "\t" + line; //DELETED: "Imported_Genotypes" + "\t" +
+			String l =  "Index" + "\t" + line; 
 			viewFiftyLines.head = new CnvHeader(l);
 
 		}
@@ -341,7 +341,7 @@ public class CnvViewerInterface extends javax.swing.JFrame
 			{
 
 				String nt;
-				nt = in + "\t" + n; //DELETED: "N/A" + "\t" + 
+				nt = in + "\t" + n; 
 				CnvReader ob1 = new CnvReader(nt);
 				viewFiftyLines.arrayOfLines.add(ob1);
 
@@ -447,7 +447,7 @@ public class CnvViewerInterface extends javax.swing.JFrame
 		JButton yes = new JButton("YES");
 		JButton no = new JButton("NO");
 		JLabel label4 = new JLabel(
-				"Do you want to prefilter the file using the Coding and Splice variants filter?");
+				"Do you want to prefilter the file using the Coding variants filter?");
 		demo2.frame.add(label4);
 		demo2.frame.add(yes);
 		demo2.frame.add(no);
@@ -461,7 +461,7 @@ public class CnvViewerInterface extends javax.swing.JFrame
 			{
 				CnvShowTable.tableStatus = 19;
 				CnvFilterFunctions rf2 = new CnvFilterFunctions(
-						"Coding and Splice Variants");
+						"Coding Variants");
 				threadExecutor = Executors.newFixedThreadPool(1);
 				threadExecutor.execute(rf2);
 				threadExecutor.shutdown();
