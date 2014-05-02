@@ -150,7 +150,7 @@ public class CnvHeapSortAlgorithm extends JFrame implements Runnable
 			// frequency.add(datavalue[CG_69]);
 
 			// check var type column first
-			if (sel.equalsIgnoreCase("VarType"))
+			if (sel.equalsIgnoreCase("VarType")) //CHANGE to loss/gain??
 			{
 				if ("del".equals(col))
 				{

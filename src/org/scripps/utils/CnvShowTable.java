@@ -268,17 +268,18 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 		createContentTable(dataFilter, columns, filename);
 	}
 
-	public static void into2DArrayFilterData(ArrayList<CnvReader> af,
-			int counter)
+	public static void into2DArrayFilterData(ArrayList<CnvReader> prefilteredList, int counter)
 	{
 
 		Object[][] dataFilter;
 		dataFilter = new Object[counter][columns.length];
-
+		System.out.println("into2DArrayFilterData");
+		
 		for (int j = 0; j < counter; j++)
 		{
 			filterCounter++;
-			String lines = af.get(j).fileRow;
+			System.out.println("Counter: " + counter + "::columns.length: " + columns.length);
+			String lines = prefilteredList.get(j).fileRow;
 			String[] lineAsArray = lines.split("\t");
 			int lengthOfLine = lineAsArray.length;
 
@@ -298,7 +299,7 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 			} else
 			{
 				System.out
-						.println("This looks like a corupted file! Lenght of this line is: "
+						.println("This looks like a corrupted file! Length of this line is: "
 								+ lengthOfLine
 								+ " but we should have only "
 								+ columns.length + " columns.");
@@ -306,10 +307,15 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 			}
 		}
 
+		System.out.println("Current array= "+ CnvFilterFunctions.currentArray);
+		System.out.println(CnvFilterFunctions.filterName == null? "NULL" : CnvFilterFunctions.filterName.size());
 		String nameOfFilter = CnvFilterFunctions.filterName
 				.get(CnvFilterFunctions.currentArray);
+		System.out.println("nameOfFilter= "+ nameOfFilter);
 		createContentTable(dataFilter, columns, "Filtered file by  "
 				+ nameOfFilter);
+
+	
 	}
 
 	public static void createContentTable(final Object[][] data,
