@@ -356,7 +356,7 @@ public class CnvHeapSortAlgorithm extends JFrame implements Runnable
 		}
 	}
 
-	// Previous page
+	// Previous page..
 	public static void PreviousPage()
 	{
 

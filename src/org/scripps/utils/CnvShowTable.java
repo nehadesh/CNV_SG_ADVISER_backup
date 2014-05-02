@@ -2121,7 +2121,7 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 		FilteredArray = new ArrayList<CnvReader>();
 		tableStatus = 14;
 		CnvShowTable.onlyPage = 0; // Neha: fixed PrevPage problem with Advanced
-									// Filter
+
 		// System.out.println("ADVANCEDfilter");
 
 		final CnvViewerInterface demo2 = new CnvViewerInterface();

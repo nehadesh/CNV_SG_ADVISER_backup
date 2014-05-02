@@ -131,7 +131,7 @@ public class CnvFilterFunctions implements Runnable
 		if (counterCod > 1000)
 		{
 			end = 1000;
-			CnvShowTable.onlyPage = 0; //Neha: added to fix Prev Page
+			CnvShowTable.onlyPage = 0; //Neha: added to fix Previous Page
 			
 		} else
 		{
