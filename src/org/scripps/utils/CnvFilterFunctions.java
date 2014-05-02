@@ -38,7 +38,7 @@ public class CnvFilterFunctions implements Runnable
 	public static Container content;
 	public static JProgressBar progressBar;
 	public static Border border;
-	public static int b;
+	public static int progressIndicator;
 	public static int pageNumber = 1;
 
 	public static int currentArray = 0;
@@ -62,7 +62,7 @@ public class CnvFilterFunctions implements Runnable
 		progressBar.setBorder(border);
 		content.add(progressBar, BorderLayout.NORTH);
 		frame.setSize(300, 100);
-		b = 0;
+		progressIndicator = 0;
 	}
 
 	public static void CodingVar()
@@ -108,18 +108,20 @@ public class CnvFilterFunctions implements Runnable
 			if ((lineCount % threePerc) == 0)
 			{
 				frame.setVisible(true);
-				b = b + 3;
-				progressBar.setValue(b);
+				progressIndicator = progressIndicator + 3;
+				progressBar.setValue(progressIndicator);
 				progressBar.setStringPainted(true);
 			}
 
 			String line = TempArrayOne.get(i).fileRow;
 
 			String[] l = line.split("\t");
-			String s = l[colForSort];
-			if (s.toLowerCase().contains("nonsy")
-					|| s.toLowerCase().contains("frame")
-					|| s.toLowerCase().contains("Nonsense"))
+			String sortingColumn = l[colForSort];
+			if (sortingColumn.toLowerCase().contains("partial")
+					|| sortingColumn.toLowerCase().contains("frame")
+					|| sortingColumn.toLowerCase().contains("amplified")
+					|| sortingColumn.toLowerCase().contains("deletion")
+					|| sortingColumn.toLowerCase().contains("deleted"))
 			{
 
 				counterCod++;
@@ -131,8 +133,8 @@ public class CnvFilterFunctions implements Runnable
 		if (counterCod > 1000)
 		{
 			end = 1000;
-			CnvShowTable.onlyPage = 0; //Neha: added to fix Previous Page
-			
+			CnvShowTable.onlyPage = 0; // Neha: added to fix Previous Page
+
 		} else
 		{
 			end = CnvShowTable.FilteredArray.size();
@@ -221,7 +223,6 @@ public class CnvFilterFunctions implements Runnable
 				// System.out.println("dbSNP column number is: " + dbSNP);
 			}
 		}
-		
 
 		for (int i = 0; i < end; i++)
 		{
@@ -230,33 +231,32 @@ public class CnvFilterFunctions implements Runnable
 			if ((lineCount % threePerc) == 0)
 			{
 				frame.setVisible(true);
-				b = b + 3;
-				progressBar.setValue(b);
+				progressIndicator = progressIndicator + 3;
+				progressBar.setValue(progressIndicator);
 				progressBar.setStringPainted(true);
 			}
 
 			String line = TempArrayOne.get(i).fileRow;
 			String[] l = line.split("\t");
-			String s = l[colForSort];
+			String sortingColumn = l[colForSort];
 			// if it's from custom filter 11
 			if (CnvShowTable.tableStatus == 13)
 			{
 				String t = l[dbSNP];
 				if (!t.equals("-"))
 				{
-					continue;	
+					continue;
 				}
 			}
 
-			if (s.toLowerCase().contains("nonsy")
-					|| s.toLowerCase().contains("frame")
-					|| s.toLowerCase().contains("Nonsense"))
+			if (sortingColumn.toLowerCase().contains("nonsy")
+					|| sortingColumn.toLowerCase().contains("frame")
+					|| sortingColumn.toLowerCase().contains("Nonsense"))
 			{
 
 				// check to see if this is custom filter 3
-				if (CnvShowTable.frequencySelection == -1
-						&& CnvShowTable.frequencySelection2 == -1
-						&& CnvShowTable.frequencySelection3 == -1)
+				if (CnvShowTable.thousandGenFrequencySelection == -1
+						&& CnvShowTable.wellderlyFrequencySelection == -1)
 				{
 
 					counter++;
@@ -271,7 +271,7 @@ public class CnvFilterFunctions implements Runnable
 					// If "N/A" found in the frequency columns transform "N/A"
 					// to "0" since we are just looking for smaller the
 					// frequency and alhighes frequency is "1"
-					if (CnvShowTable.frequencySelection != -1.0
+					if (CnvShowTable.thousandGenFrequencySelection != -1.0
 							&& thousandGen != 0)
 					{
 						if (l[thousandGen].contains("N/A"))
@@ -288,23 +288,9 @@ public class CnvFilterFunctions implements Runnable
 							}
 						}
 					}
-					if (CnvShowTable.frequencySelection2 != -1.0 && GC69 != 0)
-					{
-						if (l[GC69].contains("N/A"))
-						{
-							c = 0.0;
-						} else
-						{
-							try
-							{
-								c = Double.valueOf(l[GC69]);
-							} catch (Exception ex)
-							{
-								continue;
-							}
-						}
-					}
-					if (CnvShowTable.frequencySelection3 != -1.0 && GCWELL != 0)
+
+					if (CnvShowTable.wellderlyFrequencySelection != -1.0
+							&& GCWELL != 0)
 					{
 						if (l[GCWELL].contains("N/A"))
 						{
@@ -321,9 +307,8 @@ public class CnvFilterFunctions implements Runnable
 						}
 					}
 
-					if (b <= CnvShowTable.frequencySelection
-							&& c <= CnvShowTable.frequencySelection2
-							&& d <= CnvShowTable.frequencySelection3)
+					if (b <= CnvShowTable.thousandGenFrequencySelection
+							&& d <= CnvShowTable.wellderlyFrequencySelection)
 					{
 
 						counter++;
@@ -339,9 +324,8 @@ public class CnvFilterFunctions implements Runnable
 				if (splice.contains("Splice"))
 				{
 					// check to see if this is custom filter 3
-					if (CnvShowTable.frequencySelection == -1
-							&& CnvShowTable.frequencySelection2 == -1
-							&& CnvShowTable.frequencySelection3 == -1)
+					if (CnvShowTable.thousandGenFrequencySelection == -1
+							&& CnvShowTable.wellderlyFrequencySelection == -1)
 					{
 
 						counter++;
@@ -354,7 +338,7 @@ public class CnvFilterFunctions implements Runnable
 						// If "N/A" found in the frequency columns transform
 						// "N/A" to "0" since we are just looking for smaller
 						// the frequency and alhighes frequency is "1"
-						if (CnvShowTable.frequencySelection != -1.0
+						if (CnvShowTable.thousandGenFrequencySelection != -1.0
 								&& thousandGen != 0)
 						{
 							if (l[thousandGen].contains("N/A"))
@@ -365,18 +349,8 @@ public class CnvFilterFunctions implements Runnable
 								b = Double.valueOf(l[thousandGen]);
 							}
 						}
-						if (CnvShowTable.frequencySelection2 != -1.0
-								&& GC69 != 0)
-						{
-							if (l[GC69].contains("N/A"))
-							{
-								c = 0.0;
-							} else
-							{
-								c = Double.valueOf(l[GC69]);
-							}
-						}
-						if (CnvShowTable.frequencySelection3 != -1.0
+
+						if (CnvShowTable.wellderlyFrequencySelection != -1.0
 								&& GCWELL != 0)
 						{
 							if (l[GCWELL].contains("N/A"))
@@ -388,9 +362,8 @@ public class CnvFilterFunctions implements Runnable
 							}
 						}
 
-						if (b <= CnvShowTable.frequencySelection
-								&& c <= CnvShowTable.frequencySelection2
-								&& d <= CnvShowTable.frequencySelection3)
+						if (b <= CnvShowTable.thousandGenFrequencySelection
+								&& d <= CnvShowTable.wellderlyFrequencySelection)
 						{
 
 							counter++;
@@ -401,12 +374,11 @@ public class CnvFilterFunctions implements Runnable
 			}
 
 		}
-		
 
 		if (counter > 1000)
 		{
 			end = 1000;
-			CnvShowTable.onlyPage = 0; //Neha: added to fix Prev Page
+			CnvShowTable.onlyPage = 0; // Neha: added to fix Prev Page
 		} else
 		{
 			end = CnvShowTable.FilteredArray.size();
@@ -426,8 +398,7 @@ public class CnvFilterFunctions implements Runnable
 		}
 		if (CnvShowTable.tableStatus == 13)
 		{
-			filterName
-					.add("Non dbSNP, Coding Variants with frequency");
+			filterName.add("Non dbSNP, Coding Variants with frequency");
 		}
 		currentArray = currentArray + 1;
 		CnvShowTable.arrayOfArrays.add(CnvShowTable.FilteredArray);
@@ -435,6 +406,7 @@ public class CnvFilterFunctions implements Runnable
 
 	}
 
+	
 	public static void KnownDisease()
 	{
 		int colForSort = 0;
@@ -473,15 +445,15 @@ public class CnvFilterFunctions implements Runnable
 			if ((lineCount % threePerc) == 0)
 			{
 				frame.setVisible(true);
-				b = b + 3;
-				progressBar.setValue(b);
+				progressIndicator = progressIndicator + 3;
+				progressBar.setValue(progressIndicator);
 				progressBar.setStringPainted(true);
 			}
 
 			String line = TempArrayOne.get(i).fileRow;
 			String[] l = line.split("\t");
-			String s = l[colForSort];
-			String[] g = s.split("~");
+			String sortingColumn = l[colForSort];
+			String[] g = sortingColumn.split("~");
 			if (g[0].equals("1"))
 			{
 				counter++;
@@ -494,7 +466,7 @@ public class CnvFilterFunctions implements Runnable
 		if (counter > 1000)
 		{
 			end = 1000;
-			CnvShowTable.onlyPage = 0; //Neha: added to fix Prev Page
+			CnvShowTable.onlyPage = 0; // Neha: added to fix Prev Page
 		} else
 		{
 			end = CnvShowTable.FilteredArray.size();
@@ -508,7 +480,7 @@ public class CnvFilterFunctions implements Runnable
 		frame.dispose();
 		CnvShowTable.frame.dispose();
 
-		filterName.add("Known Disease Variants");
+		filterName.add("Disease Variants");
 		currentArray = currentArray + 1;
 		CnvShowTable.arrayOfArrays.add(CnvShowTable.FilteredArray);
 		CnvShowTable.into2DArrayFilterData(TempArray, end);
@@ -554,14 +526,14 @@ public class CnvFilterFunctions implements Runnable
 			if ((lineCount % threePerc) == 0)
 			{
 				frame.setVisible(true);
-				b = b + 3;
-				progressBar.setValue(b);
+				progressIndicator = progressIndicator + 3;
+				progressBar.setValue(progressIndicator);
 				progressBar.setStringPainted(true);
 			}
 			String line = TempArrayOne.get(i).fileRow;
 			String[] l = line.split("\t");
-			String s = l[colForSort];
-			String[] letter = s.split("~");
+			String sortingColumn = l[colForSort];
+			String[] letter = sortingColumn.split("~");
 			String letterOne = letter[0];
 
 			if (letterOne.contains("1") || letterOne.contains("2"))
@@ -576,7 +548,7 @@ public class CnvFilterFunctions implements Runnable
 		if (counterClinnical > 1000)
 		{
 			end = 1000;
-			CnvShowTable.onlyPage = 0; //Neha: added to fix Prev Page
+			CnvShowTable.onlyPage = 0; // Neha: added to fix Prev Page
 		}
 		// if we have less then 1000 lines print all the lens, set the page as
 		// the only page
@@ -647,15 +619,15 @@ public class CnvFilterFunctions implements Runnable
 			if ((lineCount % threePerc) == 0)
 			{
 				frame.setVisible(true);
-				b = b + 3;
-				progressBar.setValue(b);
+				progressIndicator = progressIndicator + 3;
+				progressBar.setValue(progressIndicator);
 				progressBar.setStringPainted(true);
 			}
 			String line = TempArrayOne.get(i).fileRow;
 			String[] l = line.split("\t");
-			String s = l[colForSort];
+			String sortingColumn = l[colForSort];
 
-			String[] letter = s.split("~");
+			String[] letter = sortingColumn.split("~");
 			String letterOne = letter[0];
 
 			if (letterOne.contains("1") || letterOne.contains("2"))
@@ -672,7 +644,7 @@ public class CnvFilterFunctions implements Runnable
 		if (counterResearch > 1000)
 		{
 			end = 1000;
-			CnvShowTable.onlyPage = 0; //Neha: added to fix Prev Page
+			CnvShowTable.onlyPage = 0; // Neha: added to fix Prev Page
 		}
 		// if we have less then 1000 lines print all the lens, set the page as
 		// the only page
@@ -764,16 +736,16 @@ public class CnvFilterFunctions implements Runnable
 			if ((lineCount % threePerc) == 0)
 			{
 				frame.setVisible(true);
-				b = b + 3;
-				progressBar.setValue(b);
+				progressIndicator = progressIndicator + 3;
+				progressBar.setValue(progressIndicator);
 				progressBar.setStringPainted(true);
 			}
 
 			String line = TempArrayOne.get(i).fileRow;
 			String[] l = line.split("\t");
-			String s = l[colForSort];
-			if (Character.isUpperCase(s.charAt(0))
-					|| Character.isLetterOrDigit(s.charAt(0)))
+			String sortingColumn = l[colForSort];
+			if (Character.isUpperCase(sortingColumn.charAt(0))
+					|| Character.isLetterOrDigit(sortingColumn.charAt(0)))
 			{
 				counterResearch++;
 				// insert the reference to the found element into the filtered
@@ -804,7 +776,7 @@ public class CnvFilterFunctions implements Runnable
 		if (counterResearch > 1000)
 		{
 			end = 1000;
-			CnvShowTable.onlyPage = 0; //Neha: added to fix Prev Page
+			CnvShowTable.onlyPage = 0; // Neha: added to fix Prev Page
 		}
 		// if we have less then 1000 lines print all the lens, set the page as
 		// the only page
@@ -872,15 +844,15 @@ public class CnvFilterFunctions implements Runnable
 			if ((lineCount % threePerc) == 0)
 			{
 				frame.setVisible(true);
-				b = b + 3;
-				progressBar.setValue(b);
+				progressIndicator = progressIndicator + 3;
+				progressBar.setValue(progressIndicator);
 				progressBar.setStringPainted(true);
 			}
 			String line = TempArrayOne.get(i).fileRow;
 			String[] l = line.split("\t");
-			String s = l[colForSort];
-			if (Character.isUpperCase(s.charAt(0))
-					|| Character.isLetterOrDigit(s.charAt(0)))
+			String sortingColumn = l[colForSort];
+			if (Character.isUpperCase(sortingColumn.charAt(0))
+					|| Character.isLetterOrDigit(sortingColumn.charAt(0)))
 			{
 				counterPharm++;
 				// insert the reference to the found element into the filtered
@@ -892,7 +864,7 @@ public class CnvFilterFunctions implements Runnable
 		if (counterPharm > 1000)
 		{
 			end = 1000;
-			CnvShowTable.onlyPage = 0; //Neha: added to fix Prev Page
+			CnvShowTable.onlyPage = 0; // Neha: added to fix Prev Page
 		}
 		// if we have less then 1000 lines print all the lens, set the page as
 		// the only page
@@ -922,8 +894,11 @@ public class CnvFilterFunctions implements Runnable
 
 	public static void TruncatedVariants()
 	{
-		int colForSort = 0;
+		int sortPharmGKB = 0;
+		int sortLocation = 0;
+		int sortCodingImpact = 0;
 		int counterPharm = 0;
+		
 
 		// this array is for representing first 1000 lines
 		ArrayList<CnvReader> TempArray = new ArrayList<CnvReader>();
@@ -941,7 +916,7 @@ public class CnvFilterFunctions implements Runnable
 			{
 				// System.out.println("We will be selecting by column: ");
 				// System.out.println(columnNames[i]);
-				colForSort = i;
+				sortPharmGKB = i;
 			}
 		}
 
@@ -952,7 +927,18 @@ public class CnvFilterFunctions implements Runnable
 			{
 				// System.out.println("We will be selecting by column: ");
 				// System.out.println(columnNames[i]);
-				colForSort = i;
+				sortCodingImpact = i;
+			}
+		}
+
+		// find which is the column named Location
+		for (int i = 0; i < CnvShowTable.columnNames.length; i++)
+		{
+			if (CnvShowTable.columnNames[i].contains("Location"))
+			{
+				// System.out.println("We will be selecting by column: ");
+				// System.out.println(columnNames[i]);
+				sortLocation = i;
 			}
 		}
 
@@ -973,19 +959,29 @@ public class CnvFilterFunctions implements Runnable
 			if ((lineCount % threePerc) == 0)
 			{
 				frame.setVisible(true);
-				b = b + 3;
-				progressBar.setValue(b);
+				progressIndicator = progressIndicator + 3;
+				progressBar.setValue(progressIndicator);
 				progressBar.setStringPainted(true);
 			}
 			String line = TempArrayOne.get(i).fileRow;
-			String[] l = line.split("\t");
-			String s = l[colForSort];
-			if (s.contains("Frameshift") || s.contains("Nonsense"))
+			String[] columnData = line.split("\t");
+			String sortColCoding = columnData[sortCodingImpact];
+			String sortColLocation = columnData[sortLocation];
+			if (sortColCoding.contains("Frameshift"))
 			{
 				// insert the reference to the found element into the filtered
 				// array
 				CnvShowTable.FilteredArray.add(TempArrayOne.get(i));
 			}
+			
+			else if (sortColLocation.contains("N_Terminal") || sortColLocation.contains("C_Terminal"))
+			{
+				//split the column into its tokens separated by ///
+				CnvShowTable.FilteredArray.add(TempArrayOne.get(i));
+			}
+			
+			//sortingColumn = columnData [sortPharmGKB];
+			//to do
 		}
 		// verify if we have more then 1000 lines in the filtered array to print
 		if (counterPharm > 1000)
@@ -1061,15 +1057,15 @@ public class CnvFilterFunctions implements Runnable
 			if ((lineCount % threePerc) == 0)
 			{
 				frame.setVisible(true);
-				b = b + 3;
-				progressBar.setValue(b);
+				progressIndicator = progressIndicator + 3;
+				progressBar.setValue(progressIndicator);
 				progressBar.setStringPainted(true);
 			}
 
 			String line = TempArrayOne.get(i).fileRow;
 			String[] l = line.split("\t");
-			String s = l[colForSort];
-			if (s.equals("-"))
+			String sortingColumn = l[colForSort];
+			if (sortingColumn.equals("-"))
 			{
 				// insert the reference to the found element into the filtered
 				// array
@@ -1177,8 +1173,8 @@ public class CnvFilterFunctions implements Runnable
 			if ((lineCount % threePerc) == 0)
 			{
 				frame.setVisible(true);
-				b = b + 3;
-				progressBar.setValue(b);
+				progressIndicator = progressIndicator + 3;
+				progressBar.setValue(progressIndicator);
 				progressBar.setStringPainted(true);
 			}
 
@@ -1332,8 +1328,8 @@ public class CnvFilterFunctions implements Runnable
 			if ((lineCount % threePerc) == 0)
 			{
 				frame.setVisible(true);
-				b = b + 3;
-				progressBar.setValue(b);
+				progressIndicator = progressIndicator + 3;
+				progressBar.setValue(progressIndicator);
 				progressBar.setStringPainted(true);
 			}
 
@@ -1402,10 +1398,10 @@ public class CnvFilterFunctions implements Runnable
 		if (counter > 1000)
 		{
 			end = 1000;
-			//CnvShowTable.onlyPage = 0;
-			//System.out.println("Simple filter0000000000"); //JUST ADDED
+			// CnvShowTable.onlyPage = 0;
+			// System.out.println("Simple filter0000000000"); //JUST ADDED
 		}
-		
+
 		// if we have less then 1000 lines print all the lens, set the page as
 		// the only page
 		else
@@ -1473,8 +1469,8 @@ public class CnvFilterFunctions implements Runnable
 			if ((lineCount % threePerc) == 0)
 			{
 				frame.setVisible(true);
-				b = b + 3;
-				progressBar.setValue(b);
+				progressIndicator = progressIndicator + 3;
+				progressBar.setValue(progressIndicator);
 				progressBar.setStringPainted(true);
 			}
 
@@ -1505,7 +1501,8 @@ public class CnvFilterFunctions implements Runnable
 		if (counter > 1000)
 		{
 			end = 1000;
-			CnvShowTable.onlyPage = 0; //added by Neha to fix SIMPLE FILTER PROBLEM
+			CnvShowTable.onlyPage = 0; // added by Neha to fix SIMPLE FILTER
+										// PROBLEM
 		}
 		// if we have less then 1000 lines print all the lens, set the page as
 		// the only page
@@ -1577,8 +1574,8 @@ public class CnvFilterFunctions implements Runnable
 			if ((lineCount % threePerc) == 0)
 			{
 				frame.setVisible(true);
-				b = b + 3;
-				progressBar.setValue(b);
+				progressIndicator = progressIndicator + 3;
+				progressBar.setValue(progressIndicator);
 				progressBar.setStringPainted(true);
 			}
 
@@ -1629,8 +1626,8 @@ public class CnvFilterFunctions implements Runnable
 		if (counter > 1000)
 		{
 			end = 1000;
-			//CnvShowTable.onlyPage = 0;	
-			
+			// CnvShowTable.onlyPage = 0;
+
 		}
 		// if we have less then 1000 lines print all the lens, set the page as
 		// the only page
@@ -1721,8 +1718,8 @@ public class CnvFilterFunctions implements Runnable
 			if ((lineCount % threePerc) == 0)
 			{
 				frame.setVisible(true);
-				b = b + 3;
-				progressBar.setValue(b);
+				progressIndicator = progressIndicator + 3;
+				progressBar.setValue(progressIndicator);
 				progressBar.setStringPainted(true);
 			}
 
@@ -1759,8 +1756,8 @@ public class CnvFilterFunctions implements Runnable
 		if (counter > 1000)
 		{
 			end = 1000;
-			//CnvShowTable.onlyPage = 0;
-		
+			// CnvShowTable.onlyPage = 0;
+
 		}
 		// if we have less then 1000 lines print all the lens, set the page as
 		// the only page
@@ -1806,7 +1803,8 @@ public class CnvFilterFunctions implements Runnable
 		// find which is the column named Coding_Impact
 		for (int i = 0; i < CnvShowTable.columnNames.length; i++)
 		{
-			System.out.println("COL NAMES TOTAL NUMBER: " + CnvShowTable.columnNames.length);
+			System.out.println("COL NAMES TOTAL NUMBER: "
+					+ CnvShowTable.columnNames.length);
 			if (CnvShowTable.columnNames[i].contains("Coding_Impact"))
 			{
 				// System.out.println("We will be selecting by column: ");
@@ -1848,17 +1846,17 @@ public class CnvFilterFunctions implements Runnable
 					null, ex);
 		}
 
-		//for (int i = 0; i < 1; i++)
-		//{
-			head = line.split("\t");
-		//}
+		// for (int i = 0; i < 1; i++)
+		// {
+		head = line.split("\t");
+		// }
 		long fileInBytes = CnvViewerInterface.cnvFile.length();
 		System.out.println("Filelenght is: " + fileInBytes);
 		// calculating how many lines on average 3 percent would be,
 		// 1358 is the size of each line in bytes
 		int threePerc = (int) ((fileInBytes / 1358) / 100) * 3;
 		System.out.println("threePerc is: " + threePerc);
-		String[] l = null;
+		String[] columnData = null;
 		while ((line = bReader.readLine()) != null)
 		{
 			lineCount++;
@@ -1866,8 +1864,8 @@ public class CnvFilterFunctions implements Runnable
 			if ((lineCount % threePerc) == 0)
 			{
 				frame.setVisible(true);
-				b = b + 3;
-				progressBar.setValue(b);
+				progressIndicator = progressIndicator + 3;
+				progressBar.setValue(progressIndicator);
 				progressBar.setStringPainted(true);
 			}
 			/*
@@ -1875,34 +1873,34 @@ public class CnvFilterFunctions implements Runnable
 			 * System.out.println("Line count is: " + lineCount); }
 			 */
 
-			l = line.split("\t");
-			String s = l[colForSort];
+			columnData = line.split("\t");
+			String sortingColumn = columnData[colForSort];
 
-			if (s.toLowerCase().contains("nonsy")
-					|| s.toLowerCase().contains("frame"))
+			if (sortingColumn.toLowerCase().contains("nonsy")
+					|| sortingColumn.toLowerCase().contains("frame"))
 			{
 				datacount++;
 				String nt;
 				// adding an index plus first element needs to be an empty space
 				// for future addition of imported genotypes
-				nt = datacount + "\t" + line; //"N/A" + "\t" + 
-				
+				nt = datacount + "\t" + line; // "N/A" + "\t" +
+
 				CnvReader ob1 = new CnvReader(nt);
-			
+
 				CnvReadFile.arrayOfLines.add(ob1);
 				CnvShowTable.FilteredArray.add(ob1);
 
 			} else
 			{
 				// find the splice site column
-				String splice = l[spliceCol];
+				String splice = columnData[spliceCol];
 				if (splice.contains("Splice"))
 				{
 					datacount++;
 					String nt;
 					// adding an index plus first element needs to be an empty
 					// space for future adition of imported genotypes
-					nt = datacount + "\t" + line; //"N/A" + "\t" + 
+					nt = datacount + "\t" + line; // "N/A" + "\t" +
 					CnvReader ob1 = new CnvReader(nt);
 					CnvReadFile.arrayOfLines.add(ob1);
 					CnvShowTable.FilteredArray.add(ob1);
@@ -1911,24 +1909,25 @@ public class CnvFilterFunctions implements Runnable
 			}
 		}
 
-	
 		System.out.println("Datacount is: " + datacount);
-		
+
 		/*
 		 * variables needed to build that darn table; get rid of some of them
 		 */
-		System.out.println("tempHeadForPrefilter: " + CnvViewerInterface.tempHeadForPrefilter);
-		String newHead = "Data Counter" + "\t" + CnvViewerInterface.tempHeadForPrefilter + "\t" + "Comments"; 
+		System.out.println("tempHeadForPrefilter: "
+				+ CnvViewerInterface.tempHeadForPrefilter);
+		String newHead = "Data Counter" + "\t"
+				+ CnvViewerInterface.tempHeadForPrefilter + "\t" + "Comments";
 		CnvShowTable.columnNames = newHead.split("\t");
-		System.out.println("COLS IN EACH DATAROW IS: " + l.length);
-		System.out.println("NEW COL NAMES TOTAL NUMBER: " + CnvShowTable.columnNames.length);
+		System.out.println("COLS IN EACH DATAROW IS: " + columnData.length);
+		System.out.println("NEW COL NAMES TOTAL NUMBER: "
+				+ CnvShowTable.columnNames.length);
 		CnvShowTable.columns = newHead.split("\t");
-		
 
 		if (datacount > 1000)
 		{
 			end = 1000;
-			CnvShowTable.onlyPage = 0; //Neha: added to fix Prev Page...
+			CnvShowTable.onlyPage = 0; // Neha: added to fix Prev Page...
 		} else
 		{
 			end = CnvReadFile.arrayOfLines.size();
@@ -1943,13 +1942,14 @@ public class CnvFilterFunctions implements Runnable
 		frame.dispose();
 		// Interface.frame.dispose();
 
-		System.out.println("Before CnvShowTable.arrayOfArrays size: " + CnvShowTable.arrayOfArrays.size());
+		System.out.println("Before CnvShowTable.arrayOfArrays size: "
+				+ CnvShowTable.arrayOfArrays.size());
 		CnvShowTable.arrayOfArrays.add(CnvReadFile.arrayOfLines);
-		System.out.println("After CnvShowTable.arrayOfArrays size: " + CnvShowTable.arrayOfArrays.size());
+		System.out.println("After CnvShowTable.arrayOfArrays size: "
+				+ CnvShowTable.arrayOfArrays.size());
 		CnvShowTable.into2DArrayFilterData(TempArray, end);
 
 	}
-
 
 	public int compoundHetero(String aff, String unaffOne, String unaffTwo,
 			String line, String[] genes, String end_allele, String gFour,
@@ -2178,7 +2178,7 @@ public class CnvFilterFunctions implements Runnable
 		int returnVal = fileChooser.showSaveDialog(CnvFilterFunctions.frame);
 		if (returnVal == JFileChooser.CANCEL_OPTION)
 			return;
-			
+
 		else if (returnVal == JFileChooser.APPROVE_OPTION)
 		{
 			File file = fileChooser.getSelectedFile();
@@ -2246,8 +2246,8 @@ public class CnvFilterFunctions implements Runnable
 			if ((lineCount % threePerc) == 0)
 			{
 				frame.setVisible(true);
-				b = b + 3;
-				progressBar.setValue(b);
+				progressIndicator = progressIndicator + 3;
+				progressBar.setValue(progressIndicator);
 				progressBar.setStringPainted(true);
 			}
 
@@ -2270,7 +2270,8 @@ public class CnvFilterFunctions implements Runnable
 		if (found_counter > 1000)
 		{
 			end = 1000;
-			CnvShowTable.onlyPage=0; //Neha: to fix Gene List filter prev page
+			CnvShowTable.onlyPage = 0; // Neha: to fix Gene List filter prev
+										// page
 		} else
 		{
 			end = CnvShowTable.FilteredArray.size();
@@ -2298,8 +2299,7 @@ public class CnvFilterFunctions implements Runnable
 		{
 			CodingVar();
 		}
-		if (CnvShowTable.tableStatus == 12
-				|| CnvShowTable.tableStatus == 13) 
+		if (CnvShowTable.tableStatus == 12 || CnvShowTable.tableStatus == 13)
 		{
 			CodingVarFreq();
 		}

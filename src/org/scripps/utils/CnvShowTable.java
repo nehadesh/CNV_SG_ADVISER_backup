@@ -105,9 +105,8 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 	public static int sortStat = 0;
 
 	// for frequency selection
-	public static Double frequencySelection = -1.0;
-	public static Double frequencySelection2 = -1.0;
-	public static Double frequencySelection3 = -1.0;
+	public static Double thousandGenFrequencySelection = -1.0;
+	public static Double wellderlyFrequencySelection = -1.0;
 
 	// variables for multiple filter algorithm
 	public static String sort1 = "";
@@ -784,7 +783,7 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 				// this is the first page
 				onlyPage = 3;
 			} else
-			{
+			{         
 				end = nextIterator + 1000;
 			}
 
@@ -1203,7 +1202,7 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 		codingVar
 				.setToolTipText("All variants impacting the protein coding sequence of a gene: i.e. all possible coding impacts except synonymous variants.");
 		codingVarFreq
-				.setToolTipText("Coding Variants plus a user defined frequency threshold in as observed in the 1000 Genomes, 69 publically available Complete Genomics genomes and the Scripps Wellderly population.");
+				.setToolTipText("Coding Variants plus a user defined frequency threshold in as observed in the 1000 Genomes and the Scripps Wellderly population.");
 		knownDisease.setToolTipText("'1' values of the ACMG-Score columns.");
 		predClinical
 				.setToolTipText("All entries in the column 'ACMG Score Clinical/Disease Entry/Explanation' receiving a modified ACMG categorization of 1, 2, or 2*. See http://genomics.scripps.edu/ADVISER/ACMG.jsp for ACMG scoring criteria.");
@@ -1213,7 +1212,7 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 				.setToolTipText("All genes annotated as cancer genes by either the Sanger Cancer Gene Census, Memorial Sloan Kettering Cancer Center or Atlas Oncology.");
 		pharmacogenetic.setToolTipText("All variants curated by PharmGKB.");
 		truncatedVariants
-				.setToolTipText("All Frameshift and Nonsense variants.");
+				.setToolTipText("All Frameshift and Nonsense variants."); //CHANGE TO: Frameshift, n-terminal deletion and c- terminal Deletion
 		chromPos.setToolTipText("All variants within a user defined region.");
 		validValueFilter
 				.setToolTipText("All variants that have valid values in a specific column except '-' and 'N/A'");
@@ -1533,9 +1532,8 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 			{
 				InitGlobalVar();
 				tableStatus = 12;
-				frequencySelection = -1.0;
-				frequencySelection2 = -1.0;
-				frequencySelection3 = -1.0;
+				thousandGenFrequencySelection = -1.0;
+				wellderlyFrequencySelection = -1.0;
 				// if sort thread exists, kill it!
 				if (threadStat == false)
 				{
@@ -1975,9 +1973,6 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 				"Please select the frequency limit of 1000Genomes:"));
 		demo1.frame.add(columns);
 		demo1.frame.add(new JLabel(
-				"Please select the frequency limit of CG_69:"));
-		demo1.frame.add(columns2);
-		demo1.frame.add(new JLabel(
 				"Please select the frequency limit of CG_WELLDERLY:"));
 		demo1.frame.add(columns3);
 
@@ -1990,24 +1985,12 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 			{
 
 				JComboBox cb = (JComboBox) evt.getSource();
-				frequencySelection = (Double) cb.getSelectedItem();
+				thousandGenFrequencySelection = (Double) cb.getSelectedItem();
 
 			}
 
 		});
 
-		columns2.addActionListener(new java.awt.event.ActionListener()
-		{
-			@Override
-			public void actionPerformed(java.awt.event.ActionEvent evt)
-			{
-
-				JComboBox cb = (JComboBox) evt.getSource();
-				frequencySelection2 = (Double) cb.getSelectedItem();
-
-			}
-
-		});
 
 		columns3.addActionListener(new java.awt.event.ActionListener()
 		{
@@ -2016,7 +1999,7 @@ public class CnvShowTable extends javax.swing.JFrame implements Runnable
 			{
 
 				JComboBox cb = (JComboBox) evt.getSource();
-				frequencySelection3 = (Double) cb.getSelectedItem();
+				wellderlyFrequencySelection = (Double) cb.getSelectedItem();
 
 			}
 

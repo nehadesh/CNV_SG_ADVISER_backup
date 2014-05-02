@@ -150,21 +150,21 @@ public class CnvHeapSortAlgorithm extends JFrame implements Runnable
 			// frequency.add(datavalue[CG_69]);
 
 			// check var type column first
-			if (sel.equalsIgnoreCase("VarType")) //CHANGE to loss/gain??
+			if (sel.equalsIgnoreCase("VarType")) //CHANGE TO: loss/gain??
 			{
-				if ("del".equals(col))
+				if ("gain".equals(col)) //if ("del".equals(col))
 				{
 					b = 1;
-				} else if ("delins".equals(col))
+				} else if ("loss".equals(col)) //else if ("delins".equals(col))
 				{
 					b = 2;
-				} else if ("ins".equals(col))
+				} /*else if ("ins".equals(col))
 				{
 					b = 3;
 				} else if ("snp".equals(col))
 				{
 					b = 4;
-				}
+				}*/
 			}
 			// parse Chromosome
 			else if (sel.equalsIgnoreCase("Chromosome"))

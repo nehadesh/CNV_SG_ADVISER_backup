@@ -1219,3 +1219,738 @@ Splicing Change Rearangements:		0
 Rate:	N/A
 Protein Motif disrupting Rearangements:		0
 Rate:	N/A
+		STATISTICS SUMMARY_IDIOM7.ug.vqsr_novel_annotation.sorted.final.txt
+Coding SNPs:		34947
+Nonsynonymous SNPs:		17835
+Synonymous SNPs:		16915
+Nonsense SNPs:		197
+Untranslated Region SNPs:		6347
+Intronic SNPs:		251768
+Damaging Truncations SNPs:		131
+Total SNPs:		336044
+Coding Insertions:		312
+In-frame Insertions:		61
+Out-of-frame Insertions:		68
+Frameshift Insertions:		183	
+Untranslated region Insertions:		895
+Intronic Insertions:		9634
+Damaging Truncations Insertions:		108
+Total Insertions:		11597
+Coding Deletions:		369
+In-frame Deletions:		63
+Inter-Codon Deletions:		121
+Frameshift Deletions:		185
+Untranslated region Deletions:		930
+Intronic Deletions:		12491
+Damaging Truncations deletions:		99
+Total Deletions:		14729
+Coding rearrangements:		1
+In-frame rearrangements:		1
+Frameshift rearrangements:		0
+Untranslated region rearrangements:		2
+Intronic rearrangements:		47
+Damaging Truncations rearangements:		0
+Total rearrangements:		53
+Total number of variants:		362423
+
+Nonsense SNPs:		197
+Rate Nonsense SNPs:		0.0056371
+
+Frameshift Structural Variants:		368
+Rate:		0.53959
+
+Splicing Change Variants:		2166
+Rate:		0.22906
+
+Probably Damaging nscSNPs:		2849
+Rate:		0.15974
+
+Possibly Damaging nscSNPs:		2158
+Rate:		0.12100
+
+Protein motif damaging Variants:		1382
+Rate:		0.097420
+
+Protein Impact Prediction(SIFT INTOLERANT) Variants:		5053
+Protein Impact Prediction(SIFT TOLERANT) Variants:		11285
+Protein Impact Prediction(Condel deletirious) Variants:		12680
+Protein Impact Prediction(Condel neutral) Variants:		3492
+TFBS Variants:		33387
+
+TFBS Disrupting Variants:		3306
+
+Rate:		0.099021
+
+pre-miRNA Disrupting Variants:		41
+Rate:		0.00011313
+
+miRNA-BS Variants:		7737
+miRNA-BS Disrupting Variants:		2593
+Rate:		0.33514
+
+miRNA-BS CREATED Variants:		1064
+Rate:		0.13752
+
+miRNA-BS CHANGED Variants:		4080
+Rate:		0.52734
+
+miRNA genomic Variants:		104
+
+Total Likely Functional Variants:		69781
+Rate:		0.19254
+
+Total Potential Functional Variants:		35006
+Rate:		0.096589
+
+Total Likely Functional Variants:		13809
+Rate:		0.038102
+
+-------------SNPs-------------
+Conserved Element SNPs:		41560
+
+TFBS SNPs:		27165
+TFBS disrupting SNPs:		121
+Rate TFBS SNPs:	0.0044543
+
+pre-miRNA Disrupting SNPS:		36
+Rate pre-miRNA Disrupting SNPs:	0.00010713
+
+miRNA-BS SNPs:		7154
+miRNA-BS disrupting SNPs:		2468
+Rate:	0.344982
+
+miRNA-BS CREATED SNPs:		1013
+Rate:	0.14160
+
+miRNA-BS CHANGED SNPs:		3673
+Rate:	0.513419
+
+miRNA genomic SNPs:		92
+
+ESE-BS deletion SNPs:		12255
+Rate:	0.51930
+
+ESE-BS induction SNPs:		11344
+Rate:	0.48070
+
+ESS-BS deletion SNPs:		12255
+Rate:	0.45233
+
+ESS-BS induction SNPs:		6709
+Rate:	0.54767
+
+Splicing Change SNPs:		72
+Rate Splicing Change SNPs:	0.011323
+
+Protein Motif disrupting SNPs:		1271
+Rate Protein Motif disrupting SNPs:	1.0000
+
+
+-------------Insertions-------------
+Conserved Element Insertions:		1152
+
+TFBS Insertions:		2631
+TFBS Disruptive Insertions:		1037
+Rate TFBS Insertions:	0.39415
+
+pre-miRNA Disrupting Insertions:		1
+Rate pre-miRNA Disrupting Insertions:	8.6229e-05
+
+miRNA-BS Insertions:		303
+miRNA-BS disrupting Insertions:		80
+Rate:	0.26403
+
+miRNA-BS CREATED Insertions:		19
+Rate:	0.062706
+
+miRNA-BS CHANGED Insertions:		204
+Rate:	0.673267
+
+miRNA genomic Insertions:		5
+
+ESE-BS deletion Insertions:		98
+Rate:	0.55682
+
+ESE-BS induction Insertions:		78
+Rate:	0.44318
+
+ESS-BS deletion Insertions:		98
+Rate:	0.31429
+
+ESS-BS induction Insertions:		72
+Rate:	0.68571
+
+Splicing Change Inertions:		217
+Rate Splicing Change Insertions:	0.28072
+
+Protein Motif disrupting Insertions:		52
+Rate Protein Motif disrupting Insertions:	1.0000
+
+
+-------------Deletions-------------
+Conserved Element Deletions:		1320
+
+TFBS Deletions:		3567
+TFBS Disrupting Deletions:		2148
+Rate TFBS Deletions:	0.60219
+
+pre-miRNA Disrupting Deletions:		4
+Rate pre-miRNA Disrupting Deletions:	0.00027157
+
+miRNA-BS Deletions:		280
+miRNA-BS disrupting Deletions:		45
+Rate:	0.16071
+
+miRNA-BS CREATED Deletions:		32
+Rate:	0.11429
+
+miRNA-BS CHANGED Deletions:		203
+Rate:	0.725000
+
+miRNA genomic Deletions:		7
+
+ESE-BS deletion Deletions:		153
+Rate:	0.57955
+
+ESE-BS induction Deletions:		111
+Rate:	0.42045
+
+ESS-BS deletion Deletions:		98
+Rate:	0.41176
+
+ESS-BS deletion Deletions:		140
+Rate:	0.58824
+
+Splicing Change Deletions:		466
+Rate Splicing Change Deletions:	0.51041
+
+Protein Motif disrupting Deletions:		59
+Rate Protein Motif disrupting Deletions:	1.0000
+
+
+-------------Delins-------------
+Conserved Element Rearrangements:		2
+
+TFBS Rearangements:		24
+TFBS Disrupting Rearangements:		0
+Rate TFBS Rearangements:	0.0000
+
+pre-miRNA Disrupting Rearangements:		0
+Rate pre-miRNA Rearangements:	0.0000
+
+miRNA-BS Insertions:		0
+miRNA-BS disrupting Rearangements:		0
+Rate:	N/A
+miRNA-BS CREATED Rearangements:		0
+Rate:	N/A
+miRNA-BS CHANGED Rearangements:		0
+Rate:	N/A
+miRNA genomic Rearangements:		0
+
+ESE-BS deletion Rearangements:		1
+Rate:	1.0000
+
+ESE-BS induction Rearangements:		0
+Rate:	0.0000
+
+ESS-BS deletion Rearangements:		1
+Rate:	0.0000
+
+ESS-BS induction Rearangements:		1
+Rate:	1.0000
+
+Splicing Change Rearangements:		2
+Rate Splicing Change Rearangements:	1.0000
+
+Protein Motif disrupting Rearangements:		0
+Rate:	N/A
+		STATISTICS Main Array
+Coding SNPs:		34947
+Nonsynonymous SNPs:		17835
+Synonymous SNPs:		16915
+Nonsense SNPs:		197
+Untranslated Region SNPs:		6347
+Intronic SNPs:		251768
+Damaging Truncations SNPs:		131
+Total SNPs:		336044
+Coding Insertions:		312
+In-frame Insertions:		61
+Out-of-frame Insertions:		68
+Frameshift Insertions:		183	
+Untranslated region Insertions:		895
+Intronic Insertions:		9634
+Damaging Truncations Insertions:		108
+Total Insertions:		11597
+Coding Deletions:		369
+In-frame Deletions:		63
+Inter-Codon Deletions:		121
+Frameshift Deletions:		185
+Untranslated region Deletions:		930
+Intronic Deletions:		12491
+Damaging Truncations deletions:		99
+Total Deletions:		14729
+Coding rearrangements:		1
+In-frame rearrangements:		1
+Frameshift rearrangements:		0
+Untranslated region rearrangements:		2
+Intronic rearrangements:		47
+Damaging Truncations rearangements:		0
+Total rearrangements:		53
+Total number of variants:		362423
+
+Nonsense SNPs:		197
+Rate Nonsense SNPs:		0.0056371
+
+Frameshift Structural Variants:		368
+Rate:		0.53959
+
+Splicing Change Variants:		2166
+Rate:		0.22906
+
+Probably Damaging nscSNPs:		2849
+Rate:		0.15974
+
+Possibly Damaging nscSNPs:		2158
+Rate:		0.12100
+
+Protein motif damaging Variants:		1382
+Rate:		0.097420
+
+Protein Impact Prediction(SIFT INTOLERANT) Variants:		5053
+Protein Impact Prediction(SIFT TOLERANT) Variants:		11285
+Protein Impact Prediction(Condel deletirious) Variants:		12680
+Protein Impact Prediction(Condel neutral) Variants:		3492
+TFBS Variants:		33387
+
+TFBS Disrupting Variants:		3306
+
+Rate:		0.099021
+
+pre-miRNA Disrupting Variants:		41
+Rate:		0.00011313
+
+miRNA-BS Variants:		7737
+miRNA-BS Disrupting Variants:		2593
+Rate:		0.33514
+
+miRNA-BS CREATED Variants:		1064
+Rate:		0.13752
+
+miRNA-BS CHANGED Variants:		4080
+Rate:		0.52734
+
+miRNA genomic Variants:		104
+
+Total Likely Functional Variants:		69781
+Rate:		0.19254
+
+Total Potential Functional Variants:		35006
+Rate:		0.096589
+
+Total Likely Functional Variants:		13809
+Rate:		0.038102
+
+-------------SNPs-------------
+Conserved Element SNPs:		41560
+
+TFBS SNPs:		27165
+TFBS disrupting SNPs:		121
+Rate TFBS SNPs:	0.0044543
+
+pre-miRNA Disrupting SNPS:		36
+Rate pre-miRNA Disrupting SNPs:	0.00010713
+
+miRNA-BS SNPs:		7154
+miRNA-BS disrupting SNPs:		2468
+Rate:	0.344982
+
+miRNA-BS CREATED SNPs:		1013
+Rate:	0.14160
+
+miRNA-BS CHANGED SNPs:		3673
+Rate:	0.513419
+
+miRNA genomic SNPs:		92
+
+ESE-BS deletion SNPs:		12255
+Rate:	0.51930
+
+ESE-BS induction SNPs:		11344
+Rate:	0.48070
+
+ESS-BS deletion SNPs:		12255
+Rate:	0.45233
+
+ESS-BS induction SNPs:		6709
+Rate:	0.54767
+
+Splicing Change SNPs:		72
+Rate Splicing Change SNPs:	0.011323
+
+Protein Motif disrupting SNPs:		1271
+Rate Protein Motif disrupting SNPs:	1.0000
+
+
+-------------Insertions-------------
+Conserved Element Insertions:		1152
+
+TFBS Insertions:		2631
+TFBS Disruptive Insertions:		1037
+Rate TFBS Insertions:	0.39415
+
+pre-miRNA Disrupting Insertions:		1
+Rate pre-miRNA Disrupting Insertions:	8.6229e-05
+
+miRNA-BS Insertions:		303
+miRNA-BS disrupting Insertions:		80
+Rate:	0.26403
+
+miRNA-BS CREATED Insertions:		19
+Rate:	0.062706
+
+miRNA-BS CHANGED Insertions:		204
+Rate:	0.673267
+
+miRNA genomic Insertions:		5
+
+ESE-BS deletion Insertions:		98
+Rate:	0.55682
+
+ESE-BS induction Insertions:		78
+Rate:	0.44318
+
+ESS-BS deletion Insertions:		98
+Rate:	0.31429
+
+ESS-BS induction Insertions:		72
+Rate:	0.68571
+
+Splicing Change Inertions:		217
+Rate Splicing Change Insertions:	0.28072
+
+Protein Motif disrupting Insertions:		52
+Rate Protein Motif disrupting Insertions:	1.0000
+
+
+-------------Deletions-------------
+Conserved Element Deletions:		1320
+
+TFBS Deletions:		3567
+TFBS Disrupting Deletions:		2148
+Rate TFBS Deletions:	0.60219
+
+pre-miRNA Disrupting Deletions:		4
+Rate pre-miRNA Disrupting Deletions:	0.00027157
+
+miRNA-BS Deletions:		280
+miRNA-BS disrupting Deletions:		45
+Rate:	0.16071
+
+miRNA-BS CREATED Deletions:		32
+Rate:	0.11429
+
+miRNA-BS CHANGED Deletions:		203
+Rate:	0.725000
+
+miRNA genomic Deletions:		7
+
+ESE-BS deletion Deletions:		153
+Rate:	0.57955
+
+ESE-BS induction Deletions:		111
+Rate:	0.42045
+
+ESS-BS deletion Deletions:		98
+Rate:	0.41176
+
+ESS-BS deletion Deletions:		140
+Rate:	0.58824
+
+Splicing Change Deletions:		466
+Rate Splicing Change Deletions:	0.51041
+
+Protein Motif disrupting Deletions:		59
+Rate Protein Motif disrupting Deletions:	1.0000
+
+
+-------------Delins-------------
+Conserved Element Rearrangements:		2
+
+TFBS Rearangements:		24
+TFBS Disrupting Rearangements:		0
+Rate TFBS Rearangements:	0.0000
+
+pre-miRNA Disrupting Rearangements:		0
+Rate pre-miRNA Rearangements:	0.0000
+
+miRNA-BS Insertions:		0
+miRNA-BS disrupting Rearangements:		0
+Rate:	N/A
+miRNA-BS CREATED Rearangements:		0
+Rate:	N/A
+miRNA-BS CHANGED Rearangements:		0
+Rate:	N/A
+miRNA genomic Rearangements:		0
+
+ESE-BS deletion Rearangements:		1
+Rate:	1.0000
+
+ESE-BS induction Rearangements:		0
+Rate:	0.0000
+
+ESS-BS deletion Rearangements:		1
+Rate:	0.0000
+
+ESS-BS induction Rearangements:		1
+Rate:	1.0000
+
+Splicing Change Rearangements:		2
+Rate Splicing Change Rearangements:	1.0000
+
+Protein Motif disrupting Rearangements:		0
+Rate:	N/A
+		STATISTICS Prefilter - Coding Variant
+Coding SNPs:		23757
+Nonsynonymous SNPs:		23733
+Synonymous SNPs:		9
+Nonsense SNPs:		15
+Untranslated Region SNPs:		1
+Intronic SNPs:		151
+Damaging Truncations SNPs:		9
+Total SNPs:		23909
+Coding Insertions:		75
+In-frame Insertions:		9
+Out-of-frame Insertions:		25
+Frameshift Insertions:		41	
+Untranslated region Insertions:		0
+Intronic Insertions:		2
+Damaging Truncations Insertions:		19
+Total Insertions:		77
+Coding Deletions:		335
+In-frame Deletions:		61
+Inter-Codon Deletions:		87
+Frameshift Deletions:		187
+Untranslated region Deletions:		1
+Intronic Deletions:		7
+Damaging Truncations deletions:		125
+Total Deletions:		343
+Coding rearrangements:		15
+In-frame rearrangements:		15
+Frameshift rearrangements:		0
+Untranslated region rearrangements:		0
+Intronic rearrangements:		0
+Damaging Truncations rearangements:		0
+Total rearrangements:		15
+Total number of variants:		24344
+
+Nonsense SNPs:		15
+Rate Nonsense SNPs:		0.00063139
+
+Frameshift Structural Variants:		228
+Rate:		0.53647
+
+Splicing Change Variants:		128
+Rate:		0.13516
+
+Probably Damaging nscSNPs:		5634
+Rate:		0.23739
+
+Possibly Damaging nscSNPs:		3828
+Rate:		0.16129
+
+Protein motif damaging Variants:		1933
+Rate:		0.090798
+
+Protein Impact Prediction(SIFT INTOLERANT) Variants:		9005
+Protein Impact Prediction(SIFT TOLERANT) Variants:		13089
+Protein Impact Prediction(Condel deletirious) Variants:		18405
+Protein Impact Prediction(Condel neutral) Variants:		4207
+TFBS Variants:		7837
+
+TFBS Disrupting Variants:		127
+
+Rate:		0.016205
+
+pre-miRNA Disrupting Variants:		13
+Rate:		0.00053401
+
+miRNA-BS Variants:		165
+miRNA-BS Disrupting Variants:		55
+Rate:		0.33333
+
+miRNA-BS CREATED Variants:		21
+Rate:		0.12727
+
+miRNA-BS CHANGED Variants:		89
+Rate:		0.53939
+
+miRNA genomic Variants:		17
+
+Total Likely Functional Variants:		51177
+Rate:		2.1022
+
+Total Potential Functional Variants:		21507
+Rate:		0.88346
+
+Total Likely Functional Variants:		18626
+Rate:		0.76512
+
+-------------SNPs-------------
+Conserved Element SNPs:		15866
+
+TFBS SNPs:		7681
+TFBS disrupting SNPs:		39
+Rate TFBS SNPs:	0.0050775
+
+pre-miRNA Disrupting SNPS:		13
+Rate pre-miRNA Disrupting SNPs:	0.00054373
+
+miRNA-BS SNPs:		146
+miRNA-BS disrupting SNPs:		51
+Rate:	0.349315
+
+miRNA-BS CREATED SNPs:		19
+Rate:	0.13014
+
+miRNA-BS CHANGED SNPs:		76
+Rate:	0.520548
+
+miRNA genomic SNPs:		17
+
+ESE-BS deletion SNPs:		7203
+Rate:	0.44884
+
+ESE-BS induction SNPs:		8845
+Rate:	0.55116
+
+ESS-BS deletion SNPs:		7203
+Rate:	0.43703
+
+ESS-BS induction SNPs:		5060
+Rate:	0.56297
+
+Splicing Change SNPs:		53
+Rate Splicing Change SNPs:	0.062871
+
+Protein Motif disrupting SNPs:		1855
+Rate Protein Motif disrupting SNPs:	1.0000
+
+
+-------------Insertions-------------
+Conserved Element Insertions:		39
+
+TFBS Insertions:		16
+TFBS Disruptive Insertions:		8
+Rate TFBS Insertions:	0.50000
+
+pre-miRNA Disrupting Insertions:		0
+Rate pre-miRNA Disrupting Insertions:	0.0000
+
+miRNA-BS Insertions:		4
+miRNA-BS disrupting Insertions:		0
+Rate:	0.0000
+
+miRNA-BS CREATED Insertions:		0
+Rate:	0.0000
+
+miRNA-BS CHANGED Insertions:		4
+Rate:	1.000000
+
+miRNA genomic Insertions:		0
+
+ESE-BS deletion Insertions:		27
+Rate:	0.64286
+
+ESE-BS induction Insertions:		15
+Rate:	0.35714
+
+ESS-BS deletion Insertions:		27
+Rate:	0.28571
+
+ESS-BS induction Insertions:		25
+Rate:	0.71429
+
+Splicing Change Inertions:		3
+Rate Splicing Change Insertions:	0.18750
+
+Protein Motif disrupting Insertions:		6
+Rate Protein Motif disrupting Insertions:	2.0000
+
+
+-------------Deletions-------------
+Conserved Element Deletions:		183
+
+TFBS Deletions:		134
+TFBS Disrupting Deletions:		80
+Rate TFBS Deletions:	0.59701
+
+pre-miRNA Disrupting Deletions:		0
+Rate pre-miRNA Disrupting Deletions:	0.0000
+
+miRNA-BS Deletions:		15
+miRNA-BS disrupting Deletions:		4
+Rate:	0.26667
+
+miRNA-BS CREATED Deletions:		2
+Rate:	0.13333
+
+miRNA-BS CHANGED Deletions:		9
+Rate:	0.600000
+
+miRNA genomic Deletions:		0
+
+ESE-BS deletion Deletions:		76
+Rate:	0.52414
+
+ESE-BS induction Deletions:		69
+Rate:	0.47586
+
+ESS-BS deletion Deletions:		44
+Rate:	0.46316
+
+ESS-BS deletion Deletions:		51
+Rate:	0.53684
+
+Splicing Change Deletions:		7
+Rate Splicing Change Deletions:	0.30435
+
+Protein Motif disrupting Deletions:		72
+Rate Protein Motif disrupting Deletions:	1.0000
+
+
+-------------Delins-------------
+Conserved Element Rearrangements:		4
+
+TFBS Rearangements:		6
+TFBS Disrupting Rearangements:		0
+Rate TFBS Rearangements:	0.0000
+
+pre-miRNA Disrupting Rearangements:		0
+Rate pre-miRNA Rearangements:	0.0000
+
+miRNA-BS Insertions:		0
+miRNA-BS disrupting Rearangements:		0
+Rate:	N/A
+miRNA-BS CREATED Rearangements:		0
+Rate:	N/A
+miRNA-BS CHANGED Rearangements:		0
+Rate:	N/A
+miRNA genomic Rearangements:		0
+
+ESE-BS deletion Rearangements:		4
+Rate:	0.33333
+
+ESE-BS induction Rearangements:		8
+Rate:	0.66667
+
+ESS-BS deletion Rearangements:		4
+Rate:	0.50000
+
+ESS-BS induction Rearangements:		2
+Rate:	0.50000
+
+Splicing Change Rearangements:		0
+Rate:	N/A
+Protein Motif disrupting Rearangements:		0
+Rate Protein Motif disrupting Rearangements:	0.0000
+
